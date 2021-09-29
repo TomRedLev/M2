@@ -1,0 +1,23 @@
+TP1 - NoSQL - Initiaux - Tom REDON
+Question 3 :
+EXPLAIN ANALYZE SELECT bdpm_ciscip.cip7, cis.cis, cis.denom, bdpm_ciscip.prese FROM cis, bdpm_ciscip WHERE cis.cis = bdpm_ciscip.cis;
+
+EXPLAIN ANALYZE SELECT bdpm_ciscip.cip7, cis.cis, cis.denom, bdpm_ciscip.prese FROM cis, bdpm_ciscip WHERE cis.cis = bdpm_ciscip.cis and cis.cis = 69309629;
+
+Question 4 :
+CREATE INDEX cis_idx ON cis (cis);
+CREATE INDEX bdpmcis_idx ON bdpm_ciscip (cis);
+Gros gain de performance
+
+Question 5 :
+CREATE MATERIALIZED VIEW view AS SELECT bdpm_ciscip.cip7, cis.cis, cis.denom, bdpm_ciscip.prese from cis, bdpm_ciscip WHERE cis.cis = bdpm_ciscip.cis;
+
+CREATE INDEX view_cis_idx ON view (cis);
+
+EXPLAIN ANALYZE SELECT * FROM view;
+
+EXPLAIN ANALYZE SELECT * FROM view WHERE cis = 69309629;
+
+Autre possibilité :
+Créer une table avec les bonnes colonnes et copier toutes les données voulues dans la nouvelle table.
+Penser à créer l'index sur la colonne cis aussi.

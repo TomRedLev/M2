@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DiceGameActivity</string>
+    <string name="toast_text">Let\'s quit the activity</string>
+    <string name="value_of_the_dice">Value of the dice : %d</string>
+    <string name="quit">Quit</string>
+    <string name="toast_text_second">Number of throws : %d</string>
+    <string name="text_view"></string>
+</resources>

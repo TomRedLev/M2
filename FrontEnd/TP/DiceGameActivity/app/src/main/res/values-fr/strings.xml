@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ActivitéJeuDé</string>
+    <string name="toast_text">Quittons l\'activité</string>
+    <string name="value_of_the_dice">Valeur du dé : %d</string>
+    <string name="quit">Quitter</string>
+    <string name="toast_text_second">Nombre de lancer : %d</string>
+</resources>
