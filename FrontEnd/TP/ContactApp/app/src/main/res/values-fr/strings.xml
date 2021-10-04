@@ -6,4 +6,10 @@
     <string name="phone_number">Numéro</string>
     <string name="edit_contact">Editer</string>
     <string name="s">%s</string>
+    <string name="name_of_the_contact">Nom du contact</string>
+    <string name="modify">Modifier</string>
+    <string name="back">Retour</string>
+    <string name="menu_search">Actions</string>
+    <string name="call">Appel</string>
+    <string name="message">Message</string>
 </resources>

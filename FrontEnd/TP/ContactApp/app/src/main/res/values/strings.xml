@@ -5,4 +5,10 @@
     <string name="phone_number">Phone number</string>
     <string name="edit_contact">Edit Contact</string>
     <string name="s">%s</string>
+    <string name="name_of_the_contact">Name of the contact</string>
+    <string name="modify">Modify</string>
+    <string name="back">Back</string>
+    <string name="menu_search">Actions</string>
+    <string name="call">Call</string>
+    <string name="message">Message</string>
 </resources>

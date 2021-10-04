@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_search"
+        android:title="@string/menu_search"
+        android:showAsAction="ifRoom|collapseActionView"
+        android:actionViewClass="android.widget.SearchView" />
+    <!-- We define a menu group -->
+    <group android:id="@+id/group_temporal">
+        <item android:id="@+id/call"
+            android:title="@string/call"
+            android:showAsAction = "ifRoom|collapseActionView" />
+        <item android:id="@+id/message"
+            android:title="@string/message"
+            android:showAsAction = "ifRoom|collapseActionView"/>
+    </group>
+</menu>

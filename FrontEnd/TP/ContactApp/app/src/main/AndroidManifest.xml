@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ContactApp">
         <activity
+            android:name=".ContactEditActivity"
+            android:exported="true" />
+        <activity
             android:name=".ContactDisplayActivity"
             android:exported="true">
             <intent-filter>
