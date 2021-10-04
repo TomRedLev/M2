@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- Exercice 2 : -->
+    <!-- <bean id="mp" class="fr.uge.jee.ex2.FrenchMessagePrinter"/> -->
+    <!-- Le constructeur sans paramètre est appelé pour CustomizableMessagePrinter avec : -->
+    <!-- <bean id="mp" class="fr.uge.jee.ex2.CustomizableMessagePrinter"/> -->
+
+    <bean id="smp" class="fr.uge.jee.ex2.SimpleMessagePrinter"/>
+    <bean id="fmp" class="fr.uge.jee.ex2.FrenchMessagePrinter"/>
+    <bean id="mp" class="fr.uge.jee.ex2.CustomizableMessagePrinter">
+        <constructor-arg value="Hello from the config-2.xml"/>
+    </bean>
+
+</beans>

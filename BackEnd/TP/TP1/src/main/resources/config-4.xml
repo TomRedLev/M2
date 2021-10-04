@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Exercice 4 : -->
+    <!--
+    <bean id="book1" class="fr.uge.jee.ex4.Book">
+        <constructor-arg  value="Harry Potter à l'école des sorciers"/>
+        <constructor-arg  value="00001"/>
+    </bean>
+    <bean id="book2" class="fr.uge.jee.ex4.Book">
+        <constructor-arg  value="Guerre et Paix"/>
+        <constructor-arg  value="00002"/>
+    </bean>
+    <bean id="library" class="fr.uge.jee.ex4.Library">
+        <constructor-arg>
+            <set>
+                <ref bean="book1"/>
+                <ref bean="book2"/>
+            </set>
+        </constructor-arg>
+    </bean>
+    -->
+
+    <!-- Il n'y a plus besoin de donner la liste des arguments pour former le set nécessaire à la création de la librairie -->
+    <bean id="book1" class="fr.uge.jee.ex4.Book">
+        <constructor-arg  value="Harry Potter à l'école des sorciers"/>
+        <constructor-arg  value="00001"/>
+    </bean>
+    <bean id="book2" class="fr.uge.jee.ex4.Book">
+        <constructor-arg  value="Guerre et Paix"/>
+        <constructor-arg  value="00002"/>
+    </bean>
+    <bean id="library" class="fr.uge.jee.ex4.Library" autowire="constructor"/>
+
+    <!-- On peut donc simplifier le code de l'exercice précédent, tel que : -->
+    <!-- A VERIFIER : ne me semble pas possible de simplifier cela -->
+    <!--
+    <bean id="smp" class="fr.uge.jee.ex3.SimpleMessagePrinter"/>
+    <bean id="fmp" class="fr.uge.jee.ex3.FrenchMessagePrinter"/>
+    <bean id="cmp" class="fr.uge.jee.ex3.CustomizableMessagePrinter">
+        <constructor-arg value="Hello from the config-3.xml"/>
+    </bean>
+    <bean id="printerServiceCount" class="fr.uge.jee.ex3.CountMessagePrinter" scope="prototype"/>
+    -->
+
+
+
+</beans>

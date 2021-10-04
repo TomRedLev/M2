@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <!-- Exercice 3 : -->
+
+    <bean id="smp" class="fr.uge.jee.ex3.SimpleMessagePrinter"/>
+    <bean id="fmp" class="fr.uge.jee.ex3.FrenchMessagePrinter"/>
+    <bean id="cmp" class="fr.uge.jee.ex3.CustomizableMessagePrinter">
+        <constructor-arg value="Hello from the config-3.xml"/>
+    </bean>
+    <!-- Le scope de base est le Design Pattern Singleton -->
+    <bean id="printerServiceCount" class="fr.uge.jee.ex3.CountMessagePrinter" scope="prototype"/>
+
+</beans>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Exercice 5 : -->
+    <!-- Partie 1 : -->
+    <!--
+    <bean id="droneDelivery" class="fr.uge.jee.onlineshop.DroneDelivery" />
+    <bean id="standardDelivery" class="fr.uge.jee.onlineshop.StandardDelivery">
+        <property name="delay" value="5"/>
+    </bean>
+
+    <bean id="returnInsurance" class="fr.uge.jee.onlineshop.ReturnInsurance">
+        <property name="everyone" value="false"/>
+    </bean>
+
+    <bean id="onlineShop" class="fr.uge.jee.onlineshop.OnlineShop">
+        <property name="name" value="Amazon"/>
+        <property name="deliveryOptions">
+            <set>
+                <ref bean="droneDelivery"/>
+                <ref bean="standardDelivery"/>
+            </set>
+        </property>
+        <property name="insurances">
+            <ref bean="returnInsurance"/>
+        </property>
+    </bean>
+    -->
+
+    <!-- Partie 2 : -->
+    <!--
+    <bean id="standardDelivery" class="fr.uge.jee.onlineshop.StandardDelivery">
+        <property name="delay" value="999"/>
+    </bean>
+
+    <bean id="onlineShop" class="fr.uge.jee.onlineshop.OnlineShop">
+        <property name="name" value="AhMaZone"/>
+        <property name="deliveryOptions">
+            <set>
+                <ref bean="standardDelivery"/>
+            </set>
+        </property>
+        <property name="insurances">
+            <set>
+            </set>
+        </property>
+    </bean>
+    -->
+
+    <!-- Exercice 4 - dernière question : -->
+    <bean id="standardDelivery" class="fr.uge.jee.onlineshop.StandardDelivery">
+        <property name="delay" value="999"/>
+    </bean>
+
+    <bean id="onlineShop" class="fr.uge.jee.onlineshop.OnlineShop" autowire="byType">
+        <property name="name" value="AhMaZone"/>
+        <property name="insurances">
+            <set></set>
+        </property>
+    </bean>
+
+</beans>
