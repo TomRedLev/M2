@@ -95,13 +95,17 @@ public class MainActivity extends AppCompatActivity {
             TextView tv = findViewById(R.id.textView);
             state.setTime_choose(Integer.valueOf(tv.getText().toString()));
             ImageView iv = findViewById(R.id.imageView);
+            TextView tv2 = findViewById(R.id.displayView);
             iv.setVisibility(View.VISIBLE);
+            tv2.setVisibility(View.GONE);
         });
 
         Button b2 = findViewById(R.id.stopButton);
         b2.setOnClickListener( (v) -> {
             ImageView iv = findViewById(R.id.imageView);
-            iv.setVisibility(View.INVISIBLE);
+            TextView tv2 = findViewById(R.id.displayView);
+            iv.setVisibility(View.GONE);
+            tv2.setVisibility(View.VISIBLE);
             state.setTimer_current(System.currentTimeMillis() - state.getTimer_start());
             TextView tv = findViewById(R.id.displayView);
             tv.setText(String.valueOf(state.getTimer_current()/1000 + ":" + state.getTimer_current() % 1000) + "\n"
