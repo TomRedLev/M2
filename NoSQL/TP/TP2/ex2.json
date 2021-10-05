@@ -1,0 +1,25 @@
+{
+	"_id": 2,
+	"title": "The Social Network",
+	"year": 2010,
+	"summary": "On a fall night in 2003, Harvard undergrad and computer programming genius Mark Zuckerberg sits down at his computer and heatedly begins working on a new idea. In a fury of blogging and programming, what begins in his dorm room soon becomes a global social network and a revolution in communication. A mere six years and 500 million friends later, Mark Zuckerberg is the youngest billionaire in history... but for this entrepreneur, success leads to both personal and legal complications.",
+	"country": "USA",
+	"genre": "Drama",
+	"director": {
+		"first": "David",
+		"last": "Fincher",
+		"birth": 1962
+	},
+	"actors": [{
+			"first": "Jesse",
+			"last": "Eisenberg",
+			"birth": 1983,
+			"role": "Mark Zuckerberg"
+		}, {
+			"first": "Rooney",
+			"last": "Mara",
+			"birth": 1985,
+			"role": "Erica Albrig"
+		}
+	]
+}

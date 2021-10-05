@@ -13,6 +13,10 @@
         <constructor-arg  value="Guerre et Paix"/>
         <constructor-arg  value="00002"/>
     </bean>
+    <bean id="book3" class="fr.uge.jee.ex4.Book">
+        <constructor-arg  value="Tests et essais"/>
+        <constructor-arg  value="00003"/>
+    </bean>
     <bean id="library" class="fr.uge.jee.ex4.Library">
         <constructor-arg>
             <set>

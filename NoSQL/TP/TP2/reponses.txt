@@ -1,13 +1,55 @@
 TP2 - NoSQL - Initiaux - Tom REDON
 
-Start : 
+Start :
 ./mongod --port 27018 --dbpath ./data (dans le dossier mongodb)
 
 Exercice 1 :
+
+Liens utiles :
+https://jsonlint.com/
+https://blog.e-zest.com/basic-commands-for-mongodb
+
 Question a :
 db.createCollection("movies")
 db.movies.insert(...)
 Voir ex1qa.json
 
-Question b : 
+Question b :
+db.createCollection("movies")
+db.createCollection("actors")
+db.movies.insert(...)
+db.actors.insert(...)
+Voir ex1qb.json
+db.movies.find()
+db.actors.find()
+db.movies.drop()
+db.actors.drop()
 
+Exercice 2 :
+Voir ex1qa.json et ex2.json
+
+Exercice 3 :
+
+Question a :
+db.movies.find({year : 2005}).pretty()
+
+Question b :
+db.movies.find({year : 2005}, {title : 1}).pretty()
+
+Question c :
+db.movies.find({year : 2005}, {_id : 0, title : 1}).pretty()
+
+Question d :
+db.movies.find({title : "The Social Network"}, {_id : 0, summary : 1}).pretty()
+
+Question e :
+db.movies.find({title : "A History of Violence"}, {_id : 0, director : 1}).pretty()
+
+Question f :
+db.movies.find({title : "The Social Network"}, {_id : 0, actors : 1}).pretty()
+
+Question g :
+db.movies.find({"director.last" : "Cronenberg"}).pretty()
+
+Question h : 
+db.movies.find({"director.first" : "David"}, {_id : 0, "director.last" : 1}).pretty()

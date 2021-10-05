@@ -1,7 +1,7 @@
 // Movies :
 {
 	"_id": 1,
-	"title": "A history of violence",
+	"title": "A History of Violence",
 	"year": 2005,
 	"summary": "Tom Stall, a humble family man and owner of a popular neighborhood restaurant, lives a quiet but fulfilling existence in the Midwest. One night Tom foils a crime at his place of business and, to his chagrin, is plastered all over the news for his heroics. Following this, mysterious people follow the Stalls' every move, concerning Tom more than anyone else. As this situation is confronted, more lurks out over where all these occurrences have stemmed from compromising his marriage, family relationship and the main characters' former relations in the process.",
 	"country": "USA",
@@ -46,8 +46,8 @@
 		"birth": 1950,
 		"role": "Carl Fogarty"
 	},
-	"movies": {
-		"title": "A history of violence",
+	"movies": [{
+		"title": "A History of Violence",
 		"year": 2005,
 		"summary": "Tom Stall, a humble family man and owner of a popular neighborhood restaurant, lives a quiet but fulfilling existence in the Midwest. One night Tom foils a crime at his place of business and, to his chagrin, is plastered all over the news for his heroics. Following this, mysterious people follow the Stalls' every move, concerning Tom more than anyone else. As this situation is confronted, more lurks out over where all these occurrences have stemmed from compromising his marriage, family relationship and the main characters' former relations in the process.",
 		"country": "USA",
@@ -57,7 +57,7 @@
 			"last": "Cronenberg",
 			"birth": 1943
 		}
-	}
+	}]
 }
 
 {
@@ -68,8 +68,8 @@
     "birth": 1958,
     "role": "Tom Stall"
   },
-	"movies": {
-		"title": "A history of violence",
+	"movies": [{
+		"title": "A History of Violence",
 		"year": 2005,
 		"summary": "Tom Stall, a humble family man and owner of a popular neighborhood restaurant, lives a quiet but fulfilling existence in the Midwest. One night Tom foils a crime at his place of business and, to his chagrin, is plastered all over the news for his heroics. Following this, mysterious people follow the Stalls' every move, concerning Tom more than anyone else. As this situation is confronted, more lurks out over where all these occurrences have stemmed from compromising his marriage, family relationship and the main characters' former relations in the process.",
 		"country": "USA",
@@ -79,7 +79,7 @@
 			"last": "Cronenberg",
 			"birth": 1943
 		}
-	}
+	}]
 }
 
 {
@@ -90,8 +90,8 @@
     "birth": 1967,
     "role": "Eddie Stall"
   },
-	"movies": {
-		"title": "A history of violence",
+	"movies": [{
+		"title": "A History of Violence",
 		"year": 2005,
 		"summary": "Tom Stall, a humble family man and owner of a popular neighborhood restaurant, lives a quiet but fulfilling existence in the Midwest. One night Tom foils a crime at his place of business and, to his chagrin, is plastered all over the news for his heroics. Following this, mysterious people follow the Stalls' every move, concerning Tom more than anyone else. As this situation is confronted, more lurks out over where all these occurrences have stemmed from compromising his marriage, family relationship and the main characters' former relations in the process.",
 		"country": "USA",
@@ -101,7 +101,7 @@
 			"last": "Cronenberg",
 			"birth": 1943
 		}
-	}
+	}]
 }
 
 {
@@ -112,8 +112,8 @@
     "birth": 1950,
     "role": "Richie Cusack"
   },
-	"movies": {
-		"title": "A history of violence",
+	"movies": [{
+		"title": "A History of Violence",
 		"year": 2005,
 		"summary": "Tom Stall, a humble family man and owner of a popular neighborhood restaurant, lives a quiet but fulfilling existence in the Midwest. One night Tom foils a crime at his place of business and, to his chagrin, is plastered all over the news for his heroics. Following this, mysterious people follow the Stalls' every move, concerning Tom more than anyone else. As this situation is confronted, more lurks out over where all these occurrences have stemmed from compromising his marriage, family relationship and the main characters' former relations in the process.",
 		"country": "USA",
@@ -123,5 +123,5 @@
 			"last": "Cronenberg",
 			"birth": 1943
 		}
-	}
+	}]
 }
