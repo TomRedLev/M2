@@ -51,5 +51,43 @@ db.movies.find({title : "The Social Network"}, {_id : 0, actors : 1}).pretty()
 Question g :
 db.movies.find({"director.last" : "Cronenberg"}).pretty()
 
-Question h : 
+Question h :
 db.movies.find({"director.first" : "David"}, {_id : 0, "director.last" : 1}).pretty()
+
+Question i :
+db.movies.find({actors : {$elemMatch : {first : "Vigo"}}}).pretty()
+
+Question j :
+db.movies.find({year : {$gte : 2005}}).pretty()
+
+Question k :
+db.movies.find({"director.birth" : {$gt : 1960}}, {_id : 0, "director.last" : 1}).pretty()
+
+Question l :
+db.movies.find({director : {$exists : 1}}, {_id : 0, title : 1}).pretty()
+
+Question m :
+db.movies.find({$or: [{summary: {$exists : 1}}, {"genre": "Drama"}]}, {_id : 0, title: 1})
+
+Question n :
+Voir ex3qn.json
+db.movies.count()
+
+Question o :
+db.movies.update({_id : 3}, {summary : "After graduating from Emory University, top student and athlete Christopher McCandless abandons his possessions, gives his entire $ 24,000 savings account to charity and hitchhikes to Alaska to live in the wilderness."})
+var into = db.movies.find( {title : "Into the Wild"} )
+into.summary = "After ..."
+into.actors = []
+db.movies.update({_id : 3}, into)
+
+Question p :
+db.movies.update({_id : 3}, {$unset : {actors : 1}})
+
+Question q :
+db.movies
+db.movies.update({_id : 3},{$addToSet : {actors: {last_name : "Hirch", first_name : "Emile"} } })
+db.movies.update({_id : 3},{$addToSet : {actors: {last_name : "Hurt", first_name : "William"} } })
+db.movies.find({_id : 3}).pretty()
+
+Question r :
+db.movies.remove({_id : 3})
