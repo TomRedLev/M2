@@ -1,0 +1,13 @@
+TP2 - NoSQL - Initiaux - Tom REDON
+
+Start : 
+./mongod --port 27018 --dbpath ./data (dans le dossier mongodb)
+
+Exercice 1 :
+Question a :
+db.createCollection("movies")
+db.movies.insert(...)
+Voir ex1qa.json
+
+Question b : 
+

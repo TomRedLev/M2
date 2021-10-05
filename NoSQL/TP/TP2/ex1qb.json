@@ -1,0 +1,127 @@
+// Movies :
+{
+	"_id": 1,
+	"title": "A history of violence",
+	"year": 2005,
+	"summary": "Tom Stall, a humble family man and owner of a popular neighborhood restaurant, lives a quiet but fulfilling existence in the Midwest. One night Tom foils a crime at his place of business and, to his chagrin, is plastered all over the news for his heroics. Following this, mysterious people follow the Stalls' every move, concerning Tom more than anyone else. As this situation is confronted, more lurks out over where all these occurrences have stemmed from compromising his marriage, family relationship and the main characters' former relations in the process.",
+	"country": "USA",
+	"genre": "Crime",
+	"director": {
+		"first": "David",
+		"last": "Cronenberg",
+		"birth": 1943
+	},
+	"actors": [{
+			"first": "Ed",
+			"last": "Harris",
+			"birth": 1950,
+			"role": "Carl Fogarty"
+		}, {
+			"first": "Vigo",
+			"last": "Mortensen",
+			"birth": 1958,
+			"role": "Tom Stall"
+		}, {
+			"first": "Maria",
+			"last": "Bello",
+			"birth": 1967,
+			"role": "Eddie Stall"
+		}, {
+			"first": "William",
+			"last": "Hurt",
+			"birth": 1950,
+			"role": "Richie Cusack"
+		}
+
+	]
+}
+
+// Actors
+
+{
+	"_id": 1,
+	"actor": {
+		"first": "Ed",
+		"last": "Harris",
+		"birth": 1950,
+		"role": "Carl Fogarty"
+	},
+	"movies": {
+		"title": "A history of violence",
+		"year": 2005,
+		"summary": "Tom Stall, a humble family man and owner of a popular neighborhood restaurant, lives a quiet but fulfilling existence in the Midwest. One night Tom foils a crime at his place of business and, to his chagrin, is plastered all over the news for his heroics. Following this, mysterious people follow the Stalls' every move, concerning Tom more than anyone else. As this situation is confronted, more lurks out over where all these occurrences have stemmed from compromising his marriage, family relationship and the main characters' former relations in the process.",
+		"country": "USA",
+		"genre": "Crime",
+		"director": {
+			"first": "David",
+			"last": "Cronenberg",
+			"birth": 1943
+		}
+	}
+}
+
+{
+	"_id": 2,
+	"actor": {
+    "first": "Vigo",
+    "last": "Mortensen",
+    "birth": 1958,
+    "role": "Tom Stall"
+  },
+	"movies": {
+		"title": "A history of violence",
+		"year": 2005,
+		"summary": "Tom Stall, a humble family man and owner of a popular neighborhood restaurant, lives a quiet but fulfilling existence in the Midwest. One night Tom foils a crime at his place of business and, to his chagrin, is plastered all over the news for his heroics. Following this, mysterious people follow the Stalls' every move, concerning Tom more than anyone else. As this situation is confronted, more lurks out over where all these occurrences have stemmed from compromising his marriage, family relationship and the main characters' former relations in the process.",
+		"country": "USA",
+		"genre": "Crime",
+		"director": {
+			"first": "David",
+			"last": "Cronenberg",
+			"birth": 1943
+		}
+	}
+}
+
+{
+	"_id": 3,
+	"actor": {
+    "first": "Maria",
+    "last": "Bello",
+    "birth": 1967,
+    "role": "Eddie Stall"
+  },
+	"movies": {
+		"title": "A history of violence",
+		"year": 2005,
+		"summary": "Tom Stall, a humble family man and owner of a popular neighborhood restaurant, lives a quiet but fulfilling existence in the Midwest. One night Tom foils a crime at his place of business and, to his chagrin, is plastered all over the news for his heroics. Following this, mysterious people follow the Stalls' every move, concerning Tom more than anyone else. As this situation is confronted, more lurks out over where all these occurrences have stemmed from compromising his marriage, family relationship and the main characters' former relations in the process.",
+		"country": "USA",
+		"genre": "Crime",
+		"director": {
+			"first": "David",
+			"last": "Cronenberg",
+			"birth": 1943
+		}
+	}
+}
+
+{
+	"_id": 4,
+	"actor": {
+    "first": "William",
+    "last": "Hurt",
+    "birth": 1950,
+    "role": "Richie Cusack"
+  },
+	"movies": {
+		"title": "A history of violence",
+		"year": 2005,
+		"summary": "Tom Stall, a humble family man and owner of a popular neighborhood restaurant, lives a quiet but fulfilling existence in the Midwest. One night Tom foils a crime at his place of business and, to his chagrin, is plastered all over the news for his heroics. Following this, mysterious people follow the Stalls' every move, concerning Tom more than anyone else. As this situation is confronted, more lurks out over where all these occurrences have stemmed from compromising his marriage, family relationship and the main characters' former relations in the process.",
+		"country": "USA",
+		"genre": "Crime",
+		"director": {
+			"first": "David",
+			"last": "Cronenberg",
+			"birth": 1943
+		}
+	}
+}
