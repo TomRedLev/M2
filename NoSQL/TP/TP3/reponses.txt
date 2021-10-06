@@ -1,0 +1,109 @@
+TP3 - NoSQL - Initiaux - Tom REDON
+
+Exercice A :
+
+use forma
+db.createCollection("courses")
+db.createCollection("teacher")
+
+Question 1 :
+We can use the id of the teacher on the course, and the id of courses in the teacher.
+OR
+We can denormalize the datas in each teacher and on each course.
+
+Question 2 :
+db.teachers.insert({
+  _id : 1,
+  first : "Olivier",
+  last : "Curé",
+  courses : [1]
+})
+
+db.teachers.insert({
+  _id : 2,
+  first : "Clément",
+  last : "Boin",
+  courses : [2]
+})
+
+db.courses.insert({
+  _id : 1,
+  subject : "NoSQL",
+  degree : "Master 2",
+  teacher : [1]
+})
+
+db.courses.insert({
+  _id : 2,
+  subject : "BackEnd",
+  degree : "Master 2",
+  teacher : [2]
+})
+
+Question 3 :
+var course = db.courses.findOne({subject : "BackEnd"})
+course = db.courses.findOne({subject : "BackEnd"})
+db.teachers.find({courses : course._id}, {_id : 0, first : 1, last : 1}).pretty()
+
+Question 4 :
+mongodump
+Voir le dump.
+
+Question 5 :
+On peut voir que les datas sont enregistrés en Json et en Bson.
+Elles regroupent les informations sur les professeurs et les informations sur les cours que l'on a rentré.
+
+Question 6 :
+db.teachers.deleteOne({first : "Clément"})
+db.courses.deleteOne({_id : 1})
+db.courses.deleteOne({_id : 2})
+On peut voir que malgré les suppressions effectuées, les références aux objets supprimés
+sont toujours présentes dans les éléments restants (Ici le premier professeur).
+
+Question 7 :
+mongorestore
+J'ai bien deux documents par collection, et les relations sont bien présentes de nouveau (car liées aux documents).
+
+
+Exercice B :
+
+Question 8 :
+mongoimport --type csv -d dbma -c movies --headerline --drop movies.csv
+
+Question 9 :
+use admin
+db.createUser(
+  {
+    user: "admin",
+    pwd: "admin",
+    roles:
+      [
+        "userAdminAnyDatabase",
+        "dbAdminAnyDatabase",
+        "readWriteAnyDatabase"
+      ]
+    }
+)
+
+mongo -u admin -p admin --authenticationDatabase admin
+
+db.createUser(
+  {
+    user: "user",
+    pwd: "user",
+    roles:
+      [
+        "readAnyDatabase"
+      ]
+    }
+)
+
+mongo -u user -p user --authenticationDatabase admin
+
+Question 10 :
+On peut encore se connecter et on peut effectuer des modifications.
+
+
+Exercice C :
+
+Voir TP3_Java
