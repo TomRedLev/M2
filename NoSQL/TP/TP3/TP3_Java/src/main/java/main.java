@@ -35,7 +35,5 @@ public class main {
         System.out.println(movies.find(eq("title", "Logan")).first().toJson());
         // Question 18 :
         movies.deleteOne(eq("title", "Logan"));
-
-
     }
 }
