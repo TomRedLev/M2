@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://book" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://book" xmlns:intf="http://book" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://book" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="add">
+    <complexType>
+     <sequence>
+      <element name="title" type="xsd:string"/>
+      <element name="isbn" type="xsd:long"/>
+      <element name="author_name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addResponse">
+    <complexType/>
+   </element>
+   <element name="remove">
+    <complexType>
+     <sequence>
+      <element name="isbn" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="removeResponse">
+    <complexType/>
+   </element>
+   <element name="lookA">
+    <complexType>
+     <sequence>
+      <element name="search" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="lookAResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="lookAReturn" type="xsd:anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="lookT">
+    <complexType>
+     <sequence>
+      <element name="search" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="lookTResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="lookTReturn" type="impl:Book"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="lookARequest">
+
+      <wsdl:part element="impl:lookA" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lookTRequest">
+
+      <wsdl:part element="impl:lookT" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeResponse">
+
+      <wsdl:part element="impl:removeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lookAResponse">
+
+      <wsdl:part element="impl:lookAResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lookTResponse">
+
+      <wsdl:part element="impl:lookTResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeRequest">
+
+      <wsdl:part element="impl:remove" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addResponse">
+
+      <wsdl:part element="impl:addResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addRequest">
+
+      <wsdl:part element="impl:add" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Library">
+
+      <wsdl:operation name="add">
+
+         <wsdl:input message="impl:addRequest" name="addRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addResponse" name="addResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="remove">
+
+         <wsdl:input message="impl:removeRequest" name="removeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:removeResponse" name="removeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="lookA">
+
+         <wsdl:input message="impl:lookARequest" name="lookARequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:lookAResponse" name="lookAResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="lookT">
+
+         <wsdl:input message="impl:lookTRequest" name="lookTRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:lookTResponse" name="lookTResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="LibrarySoapBinding" type="impl:Library">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="add">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="remove">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="removeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="removeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="lookA">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="lookARequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="lookAResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="lookT">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="lookTRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="lookTResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="LibraryService">
+
+      <wsdl:port binding="impl:LibrarySoapBinding" name="Library">
+
+         <wsdlsoap:address location="http://localhost:8081/Library/services/Library"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

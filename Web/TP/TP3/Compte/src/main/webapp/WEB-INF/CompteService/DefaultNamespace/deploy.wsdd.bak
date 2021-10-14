@@ -1,0 +1,34 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CompteService WSDL service -->
+
+  <service name="Compte" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://DefaultNamespace"/>
+      <parameter name="wsdlServiceElement" value="CompteService"/>
+      <parameter name="schemaQualified" value="http://DefaultNamespace"/>
+      <parameter name="wsdlServicePort" value="Compte"/>
+      <parameter name="className" value="DefaultNamespace.CompteSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Compte"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="retraitDe" qname="operNS:retraitDe" xmlns:operNS="http://DefaultNamespace" soapAction="" >
+        <parameter qname="pns:montant" xmlns:pns="http://DefaultNamespace" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="valeurDuSolde" qname="operNS:valeurDuSolde" xmlns:operNS="http://DefaultNamespace" returnQName="retNS:valeurDuSoldeReturn" xmlns:retNS="http://DefaultNamespace" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="depotDe" qname="operNS:depotDe" xmlns:operNS="http://DefaultNamespace" soapAction="" >
+        <parameter qname="pns:montant" xmlns:pns="http://DefaultNamespace" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="depotDe valeurDuSolde retraitDe"/>
+
+  </service>
+</deployment>

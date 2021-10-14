@@ -1,0 +1,29 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServiceConvertisseurEURToJPYService WSDL service -->
+
+  <service name="ServiceConvertisseurEURToJPY" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://eurtojpy"/>
+      <parameter name="wsdlServiceElement" value="ServiceConvertisseurEURToJPYService"/>
+      <parameter name="schemaQualified" value="http://eurtojpy"/>
+      <parameter name="wsdlServicePort" value="ServiceConvertisseurEURToJPY"/>
+      <parameter name="className" value="eurtojpy.ServiceConvertisseurEURToJPYSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ServiceConvertisseurEURToJPY"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="convert" qname="operNS:convert" xmlns:operNS="http://eurtojpy" returnQName="retNS:convertReturn" xmlns:retNS="http://eurtojpy" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:eur" xmlns:pns="http://eurtojpy" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="convert"/>
+
+  </service>
+</deployment>

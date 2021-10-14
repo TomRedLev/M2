@@ -1,0 +1,7 @@
+Erreur sur les src :
+Changer le build path en mettant une autre jre.
+Supprimer l'ancienne -> Add library -> OpenJDK 11
+
+
+Erreur sur les fichiers JSP :
+java.lang.String au lieu de juste String.
