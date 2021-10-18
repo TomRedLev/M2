@@ -1,0 +1,12 @@
+fr/uge/jee/annotations/onlineshop/Application.class
+fr/uge/jee/annotations/onlineshop/DroneDelivery.class
+fr/uge/jee/annotations/onlineshop/Insurance.class
+fr/uge/jee/annotations/onlineshop/Service.class
+fr/uge/jee/annotations/onlineshop/TheftInsurance.class
+fr/uge/jee/annotations/messenger/Messenger.class
+fr/uge/jee/annotations/onlineshop/StandardDelivery.class
+fr/uge/jee/annotations/onlineshop/Delivery.class
+fr/uge/jee/annotations/messenger/Application.class
+fr/uge/jee/annotations/onlineshop/Config.class
+fr/uge/jee/annotations/onlineshop/OnlineShop.class
+fr/uge/jee/annotations/onlineshop/ReturnInsurance.class
