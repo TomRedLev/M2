@@ -1,0 +1,3 @@
+TP5 - NoSQL - Initiaux - Tom REDON
+
+CREATE (p:Person {first_name : "Alan", middle_name : "Mathison", last_name : "Turing"})
