@@ -1,10 +1,8 @@
 package fr.uge.jee.aop.students;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -16,7 +14,6 @@ import java.util.StringJoiner;
 public class RegistrationAspect {
     List<Long> lst_time_load = new ArrayList<>();
     List<Long> lst_time_save = new ArrayList<>();
-    long current_timer;
 
     /*
     @Before(value="execution(* fr.uge.jee.aop.students.RegistrationService.create*(..))")
@@ -47,14 +44,12 @@ public class RegistrationAspect {
     }
 
 
-    @Before(value="execution(* fr.uge.jee.aop.students.RegistrationService.*DB(..))")
-    public void beforeDB(JoinPoint jp) throws Throwable {
-        current_timer = System.currentTimeMillis();
-    }
 
-    @After(value="execution(* fr.uge.jee.aop.students.RegistrationService.*DB(..))")
-    public void afterDB(JoinPoint jp) throws Throwable {
-        if (jp.getSignature().getName().equals("loadFromDB")) {
+    @Around(value="execution(* fr.uge.jee.aop.students.RegistrationService.*DB(..))")
+    public void afterDB(ProceedingJoinPoint pjp) throws Throwable {
+        long current_timer = System.currentTimeMillis();
+        pjp.proceed();
+        if (pjp.getSignature().getName().equals("loadFromDB")) {
             lst_time_load.add(System.currentTimeMillis() - current_timer);
         } else {
             lst_time_save.add(System.currentTimeMillis() - current_timer);
