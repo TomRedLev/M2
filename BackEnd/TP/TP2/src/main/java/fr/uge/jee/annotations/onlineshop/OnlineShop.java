@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
+// On utilise l'annotation @PropertySource pour indiquer où se situe le dossier onlineshop.properties
+// Le component permet d'indiquer au conteneur IoC de générer un bean pour cette classe
 @PropertySource("classpath:onlineshop.properties")
 @Component
 public class OnlineShop {
@@ -18,11 +20,14 @@ public class OnlineShop {
     @Autowired
     private Set<Insurance> insurances;
 
+    // Utilisation classique d'une annotation @Value
     /*
     public OnlineShop(@Value("AhMaZone") String name) {
         this.name = name;
     }
      */
+    // On peut donc utiliser des annotations @Value en indiquant la variable que l'on souhaite utiliser et qui
+    // se situe dans le fichier onlineshop.properties
     public OnlineShop(@Value("${onlineshop.name}") String name) {
         this.name = name;
     }

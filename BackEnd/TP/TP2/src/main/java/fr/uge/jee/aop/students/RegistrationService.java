@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+// La seule modification est d'ajouter l'annotation @Component (un @Service aurait surement pu aussi marcher)
 @Component
 public class RegistrationService {
     private final HashMap<Long, Student> studentsById = new HashMap<>();

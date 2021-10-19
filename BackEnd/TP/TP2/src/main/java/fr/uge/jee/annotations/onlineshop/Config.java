@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Set;
 
+// La première classe de configuration est la suivante :
+
 /*
 @Configuration
 public class Config {
@@ -39,9 +41,8 @@ public class Config {
 }
 */
 
-// Question : Comment l'application trouve le bean de OnlineShop sans le o majuscule avec la configuration.
-// Regarder Application et OnlineShop pour voir la question
-
+// On possède donc la classe de configuration suivant lors de la dernière question de l'exercice 1  :
+// On applique les annotations @Configuration et @ComponentScan pour "indiquer" la classe de configuration
 @Configuration
 @ComponentScan
 public class Config {
