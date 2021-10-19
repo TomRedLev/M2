@@ -1,3 +1,5 @@
 TP5 - NoSQL - Initiaux - Tom REDON
 
-CREATE (p:Person {first_name : "Alan", middle_name : "Mathison", last_name : "Turing"})
+CREATE (p:Person {first_name : "Alan", middle_name : "Mathison", last_name : "Turing", birth_date : "23 June 1912"})
+CREATE (g:Place {town : "Maida Vale", region : "London", country : "England"})
+CREATE (p)-[r:BORN_IN]->(g)

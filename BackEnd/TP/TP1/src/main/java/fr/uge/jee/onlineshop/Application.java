@@ -7,8 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Application {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("config-online.xml");
-        //var onlineshop = context.getBean("onlineShop", OnlineShop.class);
-        var onlineshop = context.getBean(OnlineShop.class);
+        var onlineshop = context.getBean("onlineShop", OnlineShop.class);
         onlineshop.printDescription();
     }
 }
