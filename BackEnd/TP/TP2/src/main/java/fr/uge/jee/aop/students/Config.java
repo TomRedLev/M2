@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
-@ComponentScan
+@ComponentScan("fr.uge.jee.aop.students")
 @EnableAspectJAutoProxy
 public class Config {
 }

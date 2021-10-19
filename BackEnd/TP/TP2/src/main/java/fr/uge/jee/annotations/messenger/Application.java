@@ -12,6 +12,8 @@ public class Application {
         var messenger = applicationContext.getBean(Messenger.class);
         messenger.send("Hello !");
 
-        // On peut utiliser la commande : mvn exec:java -Dexec.mainClass="fr.uge.jee.annotations.messenger.Application"
+        // On peut utiliser la commande :
+        // export MESSENGER_TOKEN=A123G32G234H34245234
+        // mvn exec:java -Dexec.mainClass="fr.uge.jee.annotations.messenger.Application"
     }
 }
