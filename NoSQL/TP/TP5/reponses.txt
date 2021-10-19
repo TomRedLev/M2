@@ -1,5 +1,53 @@
 TP5 - NoSQL - Initiaux - Tom REDON
 
-CREATE (p:Person {first_name : "Alan", middle_name : "Mathison", last_name : "Turing", birth_date : "23 June 1912"})
-CREATE (g:Place {town : "Maida Vale", region : "London", country : "England"})
-CREATE (p)-[r:BORN_IN]->(g)
+// Pour Delete tout : 
+match (a) -[r] -> () delete a, r
+match (a) delete a
+
+// Alan Turing : 
+CREATE (p:Person {first_name : "Alan", middle_name : "Mathison", last_name : "Turing", birth_date : "23 June 1912", death_date : "7 June 1954"})
+CREATE (k:Country {country : "England"})
+CREATE (p)-[:NATIONALITY]->(k)
+
+CREATE (g:Place {town : "Maida Vale", region : "London"})
+CREATE (g)-[:SITUATED_IN]->(k)
+CREATE (p)-[:BORN_IN]->(g)
+CREATE (g2:Place {town : "Wilmslow", region : "Cheshire"})
+CREATE (g2)-[:SITUATED_IN]->(k)
+CREATE (p)-[:DEAD_IN]->(g2)
+
+CREATE (a:Activity {name : "Cryptanalysis of the Enigma"})
+CREATE (p)-[:KNOWN_FOR]->(a)
+CREATE (a2:Activity {name : "Turing's proof"})
+CREATE (p)-[:KNOWN_FOR]->(a2)
+CREATE (a3:Activity {name : "Turing machine"})
+CREATE (p)-[:KNOWN_FOR]->(a3)
+CREATE (a4:Activity {name : "Turing test"})
+CREATE (p)-[:KNOWN_FOR]->(a4)
+CREATE (a5:Activity {name : "Unorganised machine"})
+CREATE (p)-[:KNOWN_FOR]->(a5)
+CREATE (a6:Activity {name : "Turing pattern"})
+CREATE (p)-[:KNOWN_FOR]->(a6)
+CREATE (a7:Activity {name : "Turing reduction"})
+CREATE (p)-[:KNOWN_FOR]->(a7)
+CREATE (a8:Activity {name : "The Chemical Basis of Morphogenesis"})
+CREATE (p)-[:KNOWN_FOR]->(a8)
+
+CREATE (u:University {name : "University of Cambridge"})
+CREATE (g11:Place {town : "Cambridge", region : "Cambridge"})
+CREATE (g11)-[:SITUATED_IN]->(k)
+CREATE (u)-[:SITUATED_IN]->(g11)
+CREATE (p)-[:STUDIED_IN]->(u)
+
+CREATE (k2:Country {country : "United States"})
+CREATE (u2:University {name : "Princeton University"})
+CREATE (g12:Place {town : "Princeton", region : "New Jersey"})
+CREATE (g12)-[:SITUATED_IN]->(k2)
+CREATE (u2)-[:SITUATED_IN]->(g12)
+CREATE (p)-[:STUDIED_IN]->(u2)
+
+//
+
+
+
+
