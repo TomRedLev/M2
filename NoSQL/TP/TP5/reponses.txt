@@ -1,53 +1,53 @@
 TP5 - NoSQL - Initiaux - Tom REDON
 
-// Pour Delete tout : 
+// Pour Delete tout :
 match (a) -[r] -> () delete a, r
 match (a) delete a
 
-// Alan Turing : 
-CREATE (p:Person {first_name : "Alan", middle_name : "Mathison", last_name : "Turing", birth_date : "23 June 1912", death_date : "7 June 1954"})
-CREATE (k:Country {country : "England"})
-CREATE (p)-[:NATIONALITY]->(k)
+// Alan Turing :
+CREATE (p:Person {first_name : "Alan", middle_name : "Mathison", last_name : "Turing", birth_date : "23 June 1912", death_date : "7 June 1954", birth_place : "London, UK", death_place : "Cheshire, UK"})
+CREATE (u:University {name : "King's College"})
+CREATE (u2:University {name : "Princeton"})
+CREATE (p2:Person {first_name : "Alonzo", last_name : "Church", birth_date : "14 June 1903", death_date : "11 August 1995", birth_place : "Washington D.C, USA", death_place : "Ohio, USA"})
+CREATE (f:Field {name : "Maths"})
+CREATE (f2:Field {name : "Logic"})
+CREATE (p3:Person {first_name : "Tim", last_name : "Berners-Lee", birth_date : "8 June 1955", birth_place : "London, UK"})
+CREATE (u3:University {name : "Queen's College"})
+CREATE (p4:Person {first_name : "Mike", last_name : "Stonebraker", birth_date : "11 October 1943", birth_place : "Massachusetts, USA"})
+CREATE (u4:University {name : "University of Michigan"})
+CREATE (p5:Person {first_name : "Joseph", last_name : "Hellerstein", birth_date : "7 June 1968"})
+CREATE (s:Software {name : "VoltDB"})
+CREATE (l:Language {name : "Java"})
+CREATE (p6:Person {first_name : "James", last_name : "Gosling", birth_date : "19 May 1955", birth_place : "Alberta, Canada"})
+CREATE (u5:University {name : "Harvard"})
+CREATE (u6:University {name : "Berkeley"})
+CREATE (u7:University {name : "University of Wisconsin, Madison"})
+CREATE (o:Other {name : "CMV"})
+CREATE (o2:Other {name : "Calgary"})
+CREATE (aw:Award {name : "IEEE Von Neumann medal"})
 
-CREATE (g:Place {town : "Maida Vale", region : "London"})
-CREATE (g)-[:SITUATED_IN]->(k)
-CREATE (p)-[:BORN_IN]->(g)
-CREATE (g2:Place {town : "Wilmslow", region : "Cheshire"})
-CREATE (g2)-[:SITUATED_IN]->(k)
-CREATE (p)-[:DEAD_IN]->(g2)
+CREATE (p)-[:ALMA_MATER]->(u)
+CREATE (p)-[:ALMA_MATER]->(u2)
+CREATE (p)-[:FIELDS]->(f)
+CREATE (p)-[:FIELDS]->(f2)
+CREATE (p)-[:DOCTORAL_ADVISOR]->(p2)
+CREATE (p2)-[:ALMA_MATER]->(u2)
+CREATE (p2)-[:FIELDS]->(f)
+CREATE (p2)-[:FIELDS]->(f2)
+CREATE (p3)-[:ALMA_MATER]->(u3)
+CREATE (p4)-[:ALMA_MATER]->(u2)
+CREATE (p4)-[:ALMA_MATER]->(u4)
+CREATE (p4)-[:DOCTORAL_ADVISOR]->(p5)
+CREATE (p4)-[:KNOWN_FOR]->(s)
+CREATE (p4)-[:AWARD]->(aw)
+CREATE (p5)-[:ALMA_MATER]->(u5)
+CREATE (p5)-[:ALMA_MATER]->(u6)
+CREATE (p5)-[:ALMA_MATER]->(u7)
+CREATE (s)-[:WRITTEN_IN]->(l)
+CREATE (p6)-[:AWARD]->(aw)
+CREATE (p6)-[:KNOWN_FOR]->(l)
 
-CREATE (a:Activity {name : "Cryptanalysis of the Enigma"})
-CREATE (p)-[:KNOWN_FOR]->(a)
-CREATE (a2:Activity {name : "Turing's proof"})
-CREATE (p)-[:KNOWN_FOR]->(a2)
-CREATE (a3:Activity {name : "Turing machine"})
-CREATE (p)-[:KNOWN_FOR]->(a3)
-CREATE (a4:Activity {name : "Turing test"})
-CREATE (p)-[:KNOWN_FOR]->(a4)
-CREATE (a5:Activity {name : "Unorganised machine"})
-CREATE (p)-[:KNOWN_FOR]->(a5)
-CREATE (a6:Activity {name : "Turing pattern"})
-CREATE (p)-[:KNOWN_FOR]->(a6)
-CREATE (a7:Activity {name : "Turing reduction"})
-CREATE (p)-[:KNOWN_FOR]->(a7)
-CREATE (a8:Activity {name : "The Chemical Basis of Morphogenesis"})
-CREATE (p)-[:KNOWN_FOR]->(a8)
-
-CREATE (u:University {name : "University of Cambridge"})
-CREATE (g11:Place {town : "Cambridge", region : "Cambridge"})
-CREATE (g11)-[:SITUATED_IN]->(k)
-CREATE (u)-[:SITUATED_IN]->(g11)
-CREATE (p)-[:STUDIED_IN]->(u)
-
-CREATE (k2:Country {country : "United States"})
-CREATE (u2:University {name : "Princeton University"})
-CREATE (g12:Place {town : "Princeton", region : "New Jersey"})
-CREATE (g12)-[:SITUATED_IN]->(k2)
-CREATE (u2)-[:SITUATED_IN]->(g12)
-CREATE (p)-[:STUDIED_IN]->(u2)
-
-//
-
-
-
-
+// REQUETES :
+MATCH (p:Person)-[:AWARD]->(:Award {name : "IEEE Von Neumann medal"}) RETURN p.first_name, p.last_name
+MATCH (p:Person)-[:KNOWN_FOR]->(:Language {name : "Java"}) RETURN p.last_name
+MATCH (p:Person)-[:ALMA_MATER]->(:University {name : "Princeton"}) RETURN p
