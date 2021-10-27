@@ -1,0 +1,26 @@
+TP5 - NoSQL - Initiaux - Tom REDON
+
+// Pour Delete tout :
+match (a) -[r] -> () delete a, r
+match (a) delete a
+
+// Exercice 1 :
+
+(Paris, Country : France) --- hasCurrency ---> (Euro)
+|
+|
+| hasFlight (courrier : FFF, flightNumber : AF001, departureTime : 11:00, arrivalTime : 13:00, arrivalTerm : JFK, departTerm : ORL) 
+|
+|
+(New York, Country : USA) --- hasCurrency ---> (Dollar)
+
+
+OU 
+
+(Paris) --- in ---> (France) --- hasCurrency ---> (Euro)
+|
+|
+| hasFlight (courrier : FFF, flightNumber : AF001, departureTime : 11:00, arrivalTime : 13:00, arrivalTerm : JFK, departTerm : ORL) 
+|
+|
+(New York) --- in ---> (United States) --- hasCurrency ---> (Dollar)
