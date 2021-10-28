@@ -1,0 +1,601 @@
+/* TP1 DevOps - Tom Redon - Groupe Initiaux - M2 */
+
+Labo 1, 1 :
+  Question 1 :
+    On doit ouvrir le terminal
+  Question 2 :
+    Pour créer le dossier Hello et se déplacer dedans, on réalise les commandes suivantes :
+    mkdir Hello
+    cd Hello
+  Question 3 :
+    Pour initialiser le repository git, on applique la commande suivante :
+    git init
+  Question 4 :
+    Pour faire la configuration globale de git sur ce PC et la vérifier, on applique les commandes suivantes :
+    git config --global user.name "Tom Redon"
+    git config --global user.name redon.tom@gmail.com
+    git config --list
+
+    On aura l'output suivante pour la commande précédente :
+      $> user.email=redon.tom@gmail.com
+      user.name=Tom Redon
+      core.repositoryformatversion=0
+      core.filemode=true
+      core.bare=false
+
+  Question 5 :
+    Pour créer le fichier, on fait :
+    touch file1.txt
+    En faisant un git status, on peut voir que le fichier n'est pas encore tracké par git :
+    $> On branch master
+
+    No commits yet
+
+    Untracked files:
+      (use "git add <file>..." to include in what will be committed)
+	       file1.txt
+
+       nothing added to commit but untracked files present (use "git add" to track
+
+    En faisant un git status --help, on peut voir que git status permet d'observer l'état actuel du
+    repository. Il existe différentes options comme -b qui permet de checker le statut de la branche
+    ou bien encore -v qui permet d'avoir une version "verbeuse" de l'output.
+
+
+  Question 6 :
+    On fait :
+    git add .
+    ou
+    git add file1.txt
+    Enfin, on peut faire git status et on obtient l'output suivante :
+    $> On branch master
+
+    No commits yet
+
+    Changes to be committed:
+      (use "git rm --cached <file>..." to unstage)
+	       new file:   file1.txt
+
+  Question 7 :
+    On utilise la commande suivante :
+    git commit -m "[TomREDON] Added file1.txt"
+
+    $> [master (root-commit) c1346d7] [TomREDON] Added file1.txt
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 file1.txt
+
+    On push donc sur la branche master, la checksum est c1346d7, il y a eu 1 fichier modifié, 0 lignes insérées et 0 lignes retirées.
+
+Labo 1, 2 :
+  Question 1 :
+    On peut faire la suite d'actions suivante :
+    nano file1.txt (Ajout de la ligne "Test
+
+  Question 2 :
+    On utilise donc :
+    git diff
+
+    Et on obtient l'output suivante :
+    $> diff --git a/file1.txt b/file1.txt
+    index e69de29..9daeafb 100644
+    --- a/file1.txt
+    +++ b/file1.txt
+    @@ -0,0 +1 @@
+    +test
+
+    On peut y comprendre qu'une ligne a été rajouté entre la version commit et la nouvelle version.
+
+  Question 3 :
+    On utilise donc :
+    git status
+    Et on obtient l'output suivante :
+
+    $> On branch master
+    Changes not staged for commit:
+      (use "git add <file>..." to update what will be committed)
+      (use "git restore <file>..." to discard changes in working directory)
+	       modified:   file1.txt
+
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+  Question 4 :
+    On réalise les commandes suivantes :
+    git add file1.txt
+    git status
+    On obtient l'output suivante :
+    $> On branch master
+    Changes to be committed:
+      (use "git restore --staged <file>..." to unstage)
+  	     modified:   file1.txt
+
+  Question 5 :
+    On utilise la commande suivante :
+    git commit -m "[TomREDON] Added line 1 on file1.txt"
+    On obtient l'output suivante :
+    $> [master 3addd90] [TomREDON] Added line 1 on file1.txt
+        1 file changed, 1 insertion(+)
+
+  Question 6 :
+    On va utiliser la commande :
+    git commit --amend
+    On obtient l'output suivante :
+    $> [master 773f78f] [TomREDON] Added the first line to file1.txt
+    Date: Thu Oct 28 09:07:26 2021 +0200
+    1 file changed, 1 insertion(+)
+
+  Question 7 :
+    On va utiliser les commandes suivantes :
+    nano file1.txt (On ajoute la ligne "Added a second line")
+    git add file1.txt
+
+  Question 8 :
+    On va utiliser la commande git commit --amend et obtenir l'output suivante :
+    $> [master f7410b8] [TomREDON] Added two lines to file1.txt
+    Date: Thu Oct 28 09:07:26 2021 +0200
+    1 file changed, 2 insertions(+)
+
+  Question 9 :
+    On fait git log et on obtient l'output suivante :
+    $> commit f7410b87eaa8f84294593f18df585b8b8bf2cc6b (HEAD -> master)
+    Author: Tom Redon <redon.tom@gmail.com>
+    Date:   Thu Oct 28 09:07:26 2021 +0200
+
+      [TomREDON] Added two lines to file1.txt
+
+    commit c1346d7c4ee55fbde1e169a586c8c22c892c4a1b
+    Author: Tom Redon <redon.tom@gmail.com>
+    Date:   Thu Oct 28 08:58:01 2021 +0200
+
+      [TomREDON] Added file1.txt
+
+  Question 10 :
+    On utilise la commande git show et on obtient l'output suivante :
+    $> commit f7410b87eaa8f84294593f18df585b8b8bf2cc6b (HEAD -> master)
+    Author: Tom Redon <redon.tom@gmail.com>
+    Date:   Thu Oct 28 09:07:26 2021 +0200
+
+        [TomREDON] Added two lines to file1.txt
+
+    diff --git a/file1.txt b/file1.txt
+    index e69de29..276878a 100644
+    --- a/file1.txt
+    +++ b/file1.txt
+    @@ -0,0 +1,2 @@
+    +test
+    +Added a second line
+
+  Question 11 :
+    On ajoute une troisième ligne en utilisant nano file1.txt.
+    Puis on utilise la commande git status et on obtient l'output suivante :
+    $> On branch master
+    Changes not staged for commit:
+      (use "git add <file>..." to update what will be committed)
+      (use "git restore <file>..." to discard changes in working directory)
+    	modified:   file1.txt
+
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+    On utilise les commandes suivantes :
+    git checkout -- file1.txt
+
+    On utilise la commande git status et on obtient l'output suivante :
+    On branch master
+    nothing to commit, working tree clean
+
+  Question 12 :
+    On utilise nano file1.txt pour effectuer la modification et ajouter une nouvelle ligne, puis on exécute les commandes suivantes avec leurs outputs :
+    git status
+    $> On branch master
+    Changes not staged for commit:
+      (use "git add <file>..." to update what will be committed)
+      (use "git restore <file>..." to discard changes in working directory)
+    	modified:   file1.txt
+
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+    git add file1.txt
+    git status
+    $> On branch master
+    Changes to be committed:
+      (use "git restore --staged <file>..." to unstage)
+    	modified:   file1.txt
+
+    git reset
+    $> Unstaged changes after reset:
+    M	file1.txt
+
+    git status
+    $> On branch master
+    Changes not staged for commit:
+      (use "git add <file>..." to update what will be committed)
+      (use "git restore <file>..." to discard changes in working directory)
+    	modified:   file1.txt
+
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+    git checkout -- file1.txt
+
+    git status
+    $> On branch master
+    nothing to commit, working tree clean
+
+Labo 1, 3 :
+  Question 1 :
+    Pour sortir du dossier, on exécute :
+    cd ..
+
+  Question 2 :
+    On applique la commande suivante :
+    git clone https://github.com/saussact/git-training-repo.git
+
+  Question 3 :
+    On utilise cd git-training-repo/
+
+  Question 4 :
+    On fait cd users/, puis mkdir TomRedon et enfin cd TomRedon/.
+
+  Question 5 :
+    On fait touch file_1.txt et file_2.txt, puis on fait git add . et enfin git status, et on obtient l'output :
+    $> Changes to be committed:
+    (use "git restore --staged <file>..." to unstage)
+  	new:   file_1.txt
+    new:   file_2.txt
+
+  Question 6 :
+    On fait la commande suivante :
+    git commit -m "[redon-tom]: add file 1 & 2"
+    Et on obtient la sortie suivante :
+    $> [main 187aca6] [redon-tom]: add file 1 & 2
+     2 files changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 users/TomRedon/file_1.txt
+     create mode 100644 users/TomRedon/file_2.txt
+
+  Question 7 :
+    On fait un git fetch et on obtient la sortie suivante :
+    remote: Enumerating objects: 6, done.
+    remote: Counting objects: 100% (6/6), done.
+    remote: Compressing objects: 100% (3/3), done.
+    remote: Total 6 (delta 3), reused 6 (delta 3), pack-reused 0
+    Unpacking objects: 100% (6/6), 632 bytes | 210.00 KiB/s, done.
+    From https://github.com/saussact/git-training-repo
+       ed56f4c..485792c  main       -> origin/main
+
+    On effectue la commande suivante et on obtient l'output suivant (raccourci):
+    git log --graph --oneline --all --decorate
+
+    $> * 187aca6 (HEAD -> main) [redon-tom]: add file 1 & 2
+    | *   485792c (origin/main, origin/HEAD) Merge branch 'main' of https://github.com/saussact/git-training-repo into main
+    | |\
+    | |/
+    |/|
+    * |   ed56f4c Merge branch 'main' of https://github.com/saussact/git-training-repo into main
+    |\ \
+    | * | 989eadc [cahay-florian]: add file 1 & 2
+    * | | c8d073e [khelifi-allan]: add file 1 & 2
+    |/ /
+    | * c3ac5e6 add file 1 & 2
+
+    On fait les commandes suivantes :
+    git log config --global alias.lg "log --graph --oneline --all --decorate"
+    git lg (voir la sortie au dessus)
+
+  Question 8 :
+    On utilise la commande suivante :
+      git pull
+      git lg
+
+  Question 9 :
+    On utilise la commande suivante et on s'identifie :
+    git push
+    Enfin, on utilise la commande suivante  :
+    gitk --all
+    Cela ouvre une interface graphique avec tous les changements effectués dans le repository.
+
+
+
+Labo 2, 1 :
+  Question 1 :
+    On utilise les commandes suivantes :
+    git branch lab2-tomredon
+    git branch -a
+
+    $>   lab2-tomredon
+    * main
+      remotes/origin/HEAD -> origin/main
+      remotes/origin/lab2-Naim
+      remotes/origin/main
+
+  Question 2 :
+    On utilise les commandes suivantes :
+    git checkout lab2-tomredon
+    $> Switched to branch 'lab2-tomredon'
+
+    git status
+    $> On branch lab2-tomredon
+    nothing to commit, working tree clean
+
+  Question 3 :
+    On effectue les commandes suivantes :
+    nano file_2.txt
+    git add file_2.txt
+    git commit -m "[redon-tom] Modify file_2.txt"
+    $> [lab2-tomredon 8fa6fa2] [redon-tom] Modify file_2.txt
+    1 file changed, 1 insertion(+)
+    touch file_3.txt
+    git add file_3.txt
+    git commit -m "[redon-tom] Create file_3.txt"
+    $> [lab2-tomredon c5818c7] [redon-tom] Create file_3.txt
+     1 file changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 users/TomRedon/file_3.txt
+
+  Question 4 :
+    On effectue la commande suivante :
+      git checkout main
+
+  Question 5 :
+    On effectue les commandes suivantes et on obtient ces sorties :
+    git merge lab2-tomredon
+    $> Updating 9a3a20c..c5818c7
+    Fast-forward
+     users/TomRedon/file_2.txt | 1 +
+     users/TomRedon/file_3.txt | 0
+     2 files changed, 1 insertion(+)
+     create mode 100644 users/TomRedon/file_3.txt
+
+    git log
+     $> commit c5818c750827e9911930e7d8c9638b07b89b82f6 (HEAD -> main, lab2-tomredon)
+      Author: Tom Redon <redon.tom@gmail.com>
+      Date:   Thu Oct 28 10:03:55 2021 +0200
+
+          [redon-tom] Create file_3.txt
+
+      commit 8fa6fa2c280657121991409c930f3aa6e53dce01
+      Author: Tom Redon <redon.tom@gmail.com>
+      Date:   Thu Oct 28 10:03:11 2021 +0200
+
+          [redon-tom] Modify file_2.txt
+
+    gitk
+    (Interface graphique)
+
+  Question 6 :
+    On effectue la commande suivante :
+    git status
+    $> On branch main
+    Your branch is ahead of 'origin/main' by 2 commits.
+      (use "git push" to publish your local commits)
+
+    nothing to commit, working tree clean
+
+Labo 2, 2 :
+
+  Question 1 :
+    On utilise les commandes suivantes :
+    git checkout lab2-tomredon
+    git status
+    $> On branch lab2-tomredon
+    nothing to commit, working tree clean
+
+  Question 2 :
+    On effectue les commandes suivantes :
+    nano file_2.txt
+    git add file_2.txt
+    git commit -m "[redon-tom] Modify file_2.txt"
+    $> [lab2-tomredon 6a2487e] [redon-tom] Modify file_2.txt
+     1 file changed, 1 insertion(+)
+
+  Question 3 :
+    On effectue la commande :
+    git checkout main
+
+    $> Switched to branch 'main'
+    Your branch is ahead of 'origin/main' by 2 commits.
+      (use "git push" to publish your local commits)
+
+  Question 4 :
+    On effectue les commandes suivantes :
+    nano file_1.txt
+    git add file_1.txt
+    git commit -m "[redon-tom] Modify file_1.txt"
+    $> [main 76f275e] [redon-tom] Modify file_1.txt
+     1 file changed, 1 insertion(+)
+
+  Question 5 :
+    On utilise la commande suivante :
+    git merge lab2-tomredon
+    $> Merge made by the 'recursive' strategy.
+     users/TomRedon/file_2.txt | 1 +
+     1 file changed, 1 insertion(+)
+
+  Question 6 :
+    git branch -d lab2-tomredon
+    git branch -a
+    $> * main
+    remotes/origin/HEAD -> origin/main
+    remotes/origin/lab2-Naim
+    remotes/origin/main
+
+
+Labo 3 :
+  Question 1 :
+    On utilise la commande suivante :
+    git checkout -b lab3-tomredon
+    $> Switched to a new branch 'lab3-tomredon'
+
+    git status
+    $> On branch lab3-tomredon
+    nothing to commit, working tree clean
+
+  Question 2 :
+    On utilise les commandes suivantes :
+    nano file_1.txt
+    git add file_1.txt
+    git commit -m "[redon-tom] Modify file_1.txt"
+    $> [lab3-tomredon 28bbed2] [redon-tom] Modify file_1.txt
+    1 file changed, 1 insertion(+)
+
+    nano file_1.txt
+    git add file_1.txt
+    git commit -m "[redon-tom] Modify again file_1.txt"
+    $> [lab3-tomredon 1fc6d2d] [redon-tom] Modify again file_1.txt
+    1 file changed, 1 insertion(+)
+
+  Question 3 :
+    On utilise :
+    git checkout main
+    $> Switched to branch 'main'
+    Your branch is ahead of 'origin/main' by 5 commits.
+      (use "git push" to publish your local commits)
+
+  Question 4 :
+    On utilise :
+    nano file_1.txt
+    git add file_1.txt
+    git commit -m "[redon-tom] Modify file_1.txt"
+
+  Question 5 :
+    On utilise :
+    git merge lab3-tomredon
+    $> Auto-merging users/TomRedon/file_1.txt
+    CONFLICT (content): Merge conflict in users/TomRedon/file_1.txt
+    Automatic merge failed; fix conflicts and then commit the result.
+
+    git status
+    $> On branch main
+    Your branch is ahead of 'origin/main' by 6 commits.
+      (use "git push" to publish your local commits)
+
+    You have unmerged paths.
+      (fix conflicts and run "git commit")
+      (use "git merge --abort" to abort the merge)
+
+    Unmerged paths:
+      (use "git add <file>..." to mark resolution)
+    	both modified:   file_1.txt
+
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+  Question 6 :
+    On utilise la commande suivante et on décide de garder les lignes des deux fichiers :
+    nano file_1.txt
+
+  Question 7 :
+    On utilise git add file_1.txt
+
+  Question 8 :
+    On utilise :
+    git status
+    $> On branch main
+    Your branch is ahead of 'origin/main' by 6 commits.
+      (use "git push" to publish your local commits)
+
+    All conflicts fixed but you are still merging.
+      (use "git commit" to conclude merge)
+
+    Changes to be committed:
+    	modified:   file_1.txt
+
+  Question 9 :
+    On utilise :
+    git commit -m "[redon-tom] Merged conflicts"
+    $> [main 1ba9022] [redon-tom] Merged conflicts
+
+  Question 10 :
+    On utilise et on obtient :
+    git log
+    $> commit 1ba9022eb034172aadbf6f264e36f4ae6140198e (HEAD -> main)
+    Merge: fcab935 1fc6d2d
+    Author: Tom Redon <redon.tom@gmail.com>
+    Date:   Thu Oct 28 10:40:28 2021 +0200
+
+        [redon-tom] Merged conflicts
+
+    commit fcab9357abc2b190b293a912f94a7c6bf361d86f
+    Author: Tom Redon <redon.tom@gmail.com>
+    Date:   Thu Oct 28 10:33:45 2021 +0200
+
+        [redon-tom] Modify file_1.txt
+
+    commit 1fc6d2d8ccbcac76dcdada574b707b00ef7c68f7 (lab3-tomredon)
+    Author: Tom Redon <redon.tom@gmail.com>
+    Date:   Thu Oct 28 10:29:56 2021 +0200
+
+        [redon-tom] Modify again file_1.txt
+
+    commit 28bbed2914ae502b326a741ea62295ba6cc8e195
+    Author: Tom Redon <redon.tom@gmail.com>
+    Date:   Thu Oct 28 10:29:36 2021 +0200
+
+Labo 4 :
+  Question 1 :
+    On utilise la commande suivante :
+    git checkout -b lab4-tomredon
+    $> Switched to a new branch 'lab4-tomredon'
+
+    git status
+    $> On branch lab4-tomredon
+    nothing to commit, working tree clean
+
+  Question 2 :
+    On va faire la suite d'actions suivante :
+    nano file_1.txt
+    git add file_1.txt
+    git commit -m "[redon-tom] Modify file_1.txt"
+    $> [lab4-tomredon c63b790] [redon-tom] Modify file_1.txt
+     1 file changed, 1 insertion(+)
+
+    nano file_1.txt
+    git add file_1.txt
+    git commit -m "[redon-tom] Modify again file_1.txt"
+    $> [lab4-tomredon ac0ad45] [redon-tom] Modify again file_1.txt
+     1 file changed, 1 insertion(+)
+
+  Question 3 :
+    On va utiliser :
+    git checkout main
+    $> Switched to branch 'main'
+    Your branch is ahead of 'origin/main' by 9 commits.
+      (use "git push" to publish your local commits)
+
+    touch new_file.txt
+    git add new_file.txt
+
+    git commit -m "[redon-tom] Create a new file"
+
+    $> [main e7c739a] [redon-tom] Create a new file
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 users/TomRedon/new_file.txt
+
+  Question 4 :
+    On va utiliser :
+    git checkout lab4-tomredon
+    $> Switched to branch 'lab4-tomredon'
+
+  Question 5 :
+    On va utiliser :
+    git rebase main
+    $> First, rewinding head to replay your work on top of it...
+    Applying: [redon-tom] Modify file_1.txt
+    Applying: [redon-tom] Modify again file_1.txt
+
+    git log
+    $> commit c957c4603fe0258b0c78e797f139ab9b41be780c (HEAD -> lab4-tomredon)
+    Author: Tom Redon <redon.tom@gmail.com>
+    Date:   Thu Oct 28 10:46:35 2021 +0200
+
+        [redon-tom] Modify again file_1.txt
+
+    commit 93142cba3699d514f665f757786c9b6f53641f4c
+    Author: Tom Redon <redon.tom@gmail.com>
+    Date:   Thu Oct 28 10:46:04 2021 +0200
+
+        [redon-tom] Modify file_1.txt
+
+    commit e7c739a3e69a6c1577d01fb5000c2b3a5f107da0 (main)
+    Author: Tom Redon <redon.tom@gmail.com>
+    Date:   Thu Oct 28 10:50:31 2021 +0200
+
+        [redon-tom] Create a new file
+
+
+Labo 5 : 
