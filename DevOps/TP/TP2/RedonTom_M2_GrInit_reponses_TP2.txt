@@ -1,0 +1,334 @@
+/* TP2 DevOps - Tom Redon - Groupe Initiaux - M2 */
+
+Partie 0 :
+  Question 1 :
+    Containers : 
+    Virtualisation des linux LXC,
+    cloisonement au niveau de l'OS,
+    les applications partagent le même Kernel,
+    s'appuie sur les fonctionnalités de l'OS de la machine hôte,
+    accèdent à l'OS hôte de manière isolée,
+    virtualise l'environnement des exécutions (processeur, mémoire vive, système de fichiers),
+    LXC = Cgroups (isoler et limiter l'utilisation des ressources) et
+          Cloisonnement des espaces de nommage (empèche un groupe de voir les ressources des autres groupes),
+    caractérisée par le contrôleur (interraction avec l'os, la sécurité par la gestion de privilèges et de ressources, scalabilité, accessibilité des conteneurs à travers la gestion des APIs et CLIs, portabilité),
+    le contrôleur peut simuler des environnements différents de celui de l'OS,
+    ...
+    
+    VM :
+    inclut un OS,
+    virtualise la machine complète,
+    ...
+    
+    VOIR IMAGE : schema-1.png
+  
+  Question 2 : 
+    On a une application composée de microservices.
+    C'est donc une approche d'architecture logicielle où une application
+    est décomposée en plusieurs petits services (les microservices).
+    Les microservices sont spécialisés dans une seule tâche (on parle de service métier/techniques).
+    Ex : un service pour le panier d'achat, un service pour la page d'accueil, ...
+    Cela permet d'éviter les problèmes des applications monolithes (interconnexions entre les 
+    différents services, impossibilité de réutiliser certains microservices, etc).
+  
+  Question 3 : 
+    Cela permet de séparer les différents processus (microservices) dans des containers différents.
+    On peut donc y voir un avantage pour le déploiement d'une application car on aura uniquement à redéployer le microservice concerné par une modification et l'application "principale".
+    
+  Question 4 : 
+    Ca dynamise un peu l'apprentissage et la compréhension d'une nouvelle technologie.
+    
+Partie 1 : 
+  Question 1 :
+    Fait. Installation par repository sur Ubuntu 20.04.
+    J'ai juste suivi les instructions : 
+    sudo apt-get update
+
+    sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+    
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+  
+  Question 2 : 
+    On va utiliser : 
+    sudo usermod -aG docker $(USER)
+    
+  Question 3 : 
+    On va utiliser : 
+    docker run hello-world
+
+    On obtient : 
+	$> Hello from Docker!
+	This message shows that your installation appears to be working correctly.
+
+	To generate this message, Docker took the following steps:
+	1. The Docker client contacted the Docker daemon.
+	2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+	(amd64)
+	3. The Docker daemon created a new container from that image which runs the
+	executable that produces the output you are currently reading.
+	4. The Docker daemon streamed that output to the Docker client, which sent it
+	to your terminal.
+
+	To try something more ambitious, you can run an Ubuntu container with:
+	$ docker run -it ubuntu bash
+
+	Share images, automate workflows, and more with a free Docker ID:
+	https://hub.docker.com/
+
+	For more examples and ideas, visit:
+	https://docs.docker.com/get-started/
+  
+Partie 2, a : 
+  	Question 1 : 
+		On utilise :
+		docker ps -a
+		 
+		On obtient : 
+		$> CONTAINER ID   IMAGE                                 COMMAND                  CREATED              STATUS                          PORTS     NAMES
+		e38a95396f54   hello-world                           "/hello"                 About a minute ago   Exited (0) About a minute ago             sharp_hermann
+		2ad87907f1b8   hello-world                           "/hello"                 43 minutes ago       Exited (0) 43 minutes ago                 affectionate_sutherland
+		ff7543fbf375   gcr.io/k8s-minikube/kicbase:v0.0.27   "/usr/local/bin/entr…"   2 days ago           Exited (137) 2 days ago                   minikube
+	
+	Question 2 : 
+		Sur deux terminaux, on utilise les commandes suivantes : 
+		docker run -it --rm ubuntu:xenial /bin/bash
+		et
+		docker ps
+		
+		On obtient l'output suivant : 
+		$> CONTAINER ID   IMAGE           COMMAND       CREATED         STATUS         PORTS     NAMES
+		efb133d75934   ubuntu:xenial   "/bin/bash"   9 seconds ago   Up 8 seconds             distracted_lovelace
+		
+		Avec docker ps, on affiche tous les containers dont l'exécution est en cours.
+		Avec docker ps -a, on affiche tous les containers qui ont existés (dont ceux qui sont terminés).
+	
+	Question 3 : 
+		On utilise la commande ps -edf et on obtient l'output suivant : 
+		$> UID          PID    PPID  C STIME TTY          TIME CMD
+		root           1       0  0 09:12 pts/0    00:00:00 /bin/bash
+		root          11       1  0 09:16 pts/0    00:00:00 ps -edf
+		
+		On a uniquement deux processus en cours d'exécution, un script bash qui se situent dans le dossier bin et la commande ps -edf.
+	
+	Question 4 : 
+		On utilise la commande docker ps -a et on obtient cet output : 
+		$> CONTAINER ID   IMAGE                                 COMMAND                  CREATED          STATUS                      PORTS     NAMES
+		e38a95396f54   hello-world                           "/hello"                 9 minutes ago    Exited (0) 9 minutes ago              sharp_hermann
+		2ad87907f1b8   hello-world                           "/hello"                 51 minutes ago   Exited (0) 51 minutes ago             affectionate_sutherland
+		ff7543fbf375   gcr.io/k8s-minikube/kicbase:v0.0.27   "/usr/local/bin/entr…"   2 days ago       Exited (137) 2 days ago               minikube
+		
+		On peut remarquer que le processus ubuntu:xenial n'est plus indiqué, même dans le docker ps -a.
+	
+	
+		
+Partie 2, b : 
+	Question 1 :
+		On utilise docker images et on obtient l'output suivant : 
+		$> REPOSITORY                    TAG       IMAGE ID       CREATED       SIZE
+		hello-world                   latest    feb5d9fea6a5   5 weeks ago   13.3kB
+		gcr.io/k8s-minikube/kicbase   v0.0.27   9fa1cc16ad6d   6 weeks ago   1.08GB
+		ubuntu                        xenial    b6f507652425   8 weeks ago   135MB
+		
+		Cette commande indique toutes les images qui ont été téléchargées en local.
+	
+	Question 2 :
+		On va exécuter les commandes suivantes, sans afficher les sorties des autres commandes que celles 
+		de docker images et docker ps -a car elles sont longues et visiblement peu utiles : 
+		docker search mysql
+		docker images
+		$> REPOSITORY                    TAG       IMAGE ID       CREATED       SIZE
+		hello-world                   latest    feb5d9fea6a5   5 weeks ago   13.3kB
+		gcr.io/k8s-minikube/kicbase   v0.0.27   9fa1cc16ad6d   6 weeks ago   1.08GB
+		ubuntu                        xenial    b6f507652425   8 weeks ago   135MB
+		
+		docker pull mysql
+		docker images 
+		$> REPOSITORY                    TAG       IMAGE ID       CREATED       SIZE
+		mysql                         latest    ecac195d15af   10 days ago   516MB
+		hello-world                   latest    feb5d9fea6a5   5 weeks ago   13.3kB
+		gcr.io/k8s-minikube/kicbase   v0.0.27   9fa1cc16ad6d   6 weeks ago   1.08GB
+		ubuntu                        xenial    b6f507652425   8 weeks ago   135MB
+		
+		docker ps -a
+		$> CONTAINER ID   IMAGE                                 COMMAND                  CREATED          STATUS                      PORTS     NAMES
+		e38a95396f54   hello-world                           "/hello"                 18 minutes ago   Exited (0) 18 minutes ago             sharp_hermann
+		2ad87907f1b8   hello-world                           "/hello"                 59 minutes ago   Exited (0) 59 minutes ago             affectionate_sutherland
+		ff7543fbf375   gcr.io/k8s-minikube/kicbase:v0.0.27   "/usr/local/bin/entr…"   2 days ago       Exited (137) 2 days ago               minikube
+		
+		Pour simplifier la différence entre une image et un container :
+		Une image est un fichier inerte et immuable qui vont servir à la construction des dockers.
+		Les containers sont des instances utilisables des images.
+		On peut un peu voir ça de la façon suivante : une image est une recette et les containers sont les gateaux fabriqués grâce à cette recette.
+
+
+Partie 3 : 
+	Question 1 :
+		Pour déployer WordPress dans un cas simple, il faudra un container wordpress et un volume wordpress, si l'on veut conserver les données.
+		Dans un cas un peu plus complexe, avec une base de données mysql, on va plutôt utiliser le déploiement suivant : 
+		1) 2 volumes
+		    1 pour wordpress
+		    1 pour mysql
+		2) 2 conteneurs
+		    1 conteneur wordpress
+		    1 conteneur mysql
+		    
+	Question 2 : 
+		On va utiliser les commandes suivantes : 
+		docker network create web
+		$> 41ba2072a4570426320142eba6ef676b84db63446b94cc5e544382caa4d57c8d
+		
+		docker volume create wordpress
+		$> wordpress
+		
+		docker volume create mysql
+		$> mysql
+		
+		docker volume list
+		$> DRIVER    VOLUME NAME
+		local     minikube
+		local     mysql
+		local     wordpress
+	
+	Question 3 : 
+		On va utiliser les commandes suivantes sans afficher les outputs :
+		docker pull wordpress
+		docker pull mysql
+		
+	Question 4 : 
+		On va inspecter les deux commandes suivantes :
+		docker inspect --type image mysql:latest 
+		docker inspect --type image wordpress:latest
+		
+		On peut voir les informations importantes suivantes : 
+		l'ID de l'image, la date de création de l'image, les variables d'environnements définies, le containerconfig, la Virtual Size, 
+		l'IP address, la MAC address, les log path, l'image name, les port bindings, l'os, le volume, le repotag, la dockerversion, 
+		les commandes associées ou bien encore l'architecture (liste non-exhaustive).
+		
+		Toutes ces informations semblent suffisantes pour détailler les images étudiées.
+		
+	Question 5 :
+		On va lancer le service mySql en premier, puis WordPress.
+		
+	Question 6 : 
+		On va exécuter les commandes suivantes et vérifier les outputs obtenues : 
+		docker run -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_DATABASE=wordpress --name wordpressdb -v database:/var/lib/mysql -d mariadb:latest
+		docker ps
+		$> CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS      NAMES
+		4a23e65276ed   mariadb:latest   "docker-entrypoint.s…"   34 seconds ago   Up 34 seconds   3306/tcp 
+		
+		docker run -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=12345 --name wordpress --link wordpressdb:mysql -p 8090:80 -v html:/var/www/html -d wordpress
+		docker ps
+		$> CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                                   NAMES
+		d9bd04b2b4c3   wordpress        "docker-entrypoint.s…"   5 seconds ago    Up 5 seconds    0.0.0.0:8090->80/tcp, :::8090->80/tcp   wordpress
+		4a23e65276ed   mariadb:latest   "docker-entrypoint.s…"   56 seconds ago   Up 55 seconds   3306/tcp                                wordpressdb
+		
+		Les containers sont donc bien lancés.
+		
+	Question 7 : 
+		On se connecte à http://localhost:8090/wp-admin/install.php?step=1
+		On crée ensuite l'article et on le publie.
+		
+	Question 8 :
+		On exécute les commandes suivantes :
+		docker stop wordpress wordpressdb (la commande était à changer)
+		
+		On applique ensuite les commandes suivantes : 
+		docker ps -a
+		$> CONTAINER ID   IMAGE                                 COMMAND                  CREATED             STATUS                          PORTS     NAMES
+		d9bd04b2b4c3   wordpress                             "docker-entrypoint.s…"   7 minutes ago       Exited (0) 2 minutes ago                  wordpress
+		4a23e65276ed   mariadb:latest                        "docker-entrypoint.s…"   8 minutes ago       Exited (0) About a minute ago             wordpressdb
+		e38a95396f54   hello-world                           "/hello"                 47 minutes ago      Exited (0) 47 minutes ago                 sharp_hermann
+		2ad87907f1b8   hello-world                           "/hello"                 About an hour ago   Exited (0) About an hour ago              affectionate_sutherland
+		ff7543fbf375   gcr.io/k8s-minikube/kicbase:v0.0.27   "/usr/local/bin/entr…"   2 days ago          Exited (137) 2 days ago                   minikube
+		
+		docker volume list
+		$> DRIVER    VOLUME NAME
+		local     database
+		local     html
+		local     minikube
+		local     mysql
+		local     wordpress
+		
+		Le premier indique les containers, le second indique les volumes créés. Les différences sont donc tout à fait normales.
+		
+
+Partie 4 : 
+	Question 1 : 
+		La première ligne désigne l'image et sa version.
+		La ligne 4 désigne le work directory qui sera créé.
+		Les lignes 7 et 8 désignent les copies de fichiers qui seront effectués pour les dépendances.
+		La ligne 10 est une commande à exécuter pour l'installation (npm install).
+		La ligne 13 indique un bundling des sources de l'application.
+		La ligne 15 indique à Docker le port sur lequel le container est en écoute.
+		La ligne 18 indique la façon de faire run le serveur.
+		
+	Question 2 : 
+		On exécute les commandes suivantes :
+		docker build -t tsaussac/node-app .
+		docker images
+		$> REPOSITORY                    TAG       IMAGE ID       CREATED              SIZE
+		tsaussac/node-app             latest    2a42c47c114b   About a minute ago   947MB
+		wordpress                     latest    ccd598bc2c91   6 days ago           616MB
+		node                          14        31421e72129c   6 days ago           944MB
+		mysql                         latest    ecac195d15af   10 days ago          516MB
+		mariadb                       latest    12e05d5da3c5   13 days ago          409MB
+		hello-world                   latest    feb5d9fea6a5   5 weeks ago          13.3kB
+		gcr.io/k8s-minikube/kicbase   v0.0.27   9fa1cc16ad6d   6 weeks ago          1.08GB
+		ubuntu                        xenial    b6f507652425   8 weeks ago          135MB
+	
+	Question 3 : 
+		On utilise les commandes suivantes : 
+		docker run -p 8088:8080 -d tsaussac/node-app
+		docker ps
+		$> CONTAINER ID   IMAGE               COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+		26ddd74a8ebd   tsaussac/node-app   "docker-entrypoint.s…"   34 seconds ago   Up 33 seconds   0.0.0.0:8088->8080/tcp, :::8088->8080/tcp   zealous_joliot
+		
+	Question 4 :
+		On se connecte et on peut voir ce que représente l'image : reponse-partie4.png, soit la phrase : Bien joué ! Tu as fais ton premier DockerFile :)
+		Enfin, on stoppe les containers avec : docker stop zealous_joliot
+		
+
+Partie 5 : 
+	Question 1 : 
+		On définit tout d'abord la version, puis on définit les services suivants :
+		- app, où l'on va préciser l'endroit où chercher le build et les ports à associer.
+		- my_database, où l'on précise l'image, si le service doit redémarrer, les variables d'environnements et le volume associé.
+		- wordpress, où l'on précise la dépendance, l'image, si le service doit redémarrer, les ports, les variables d'environnements et les volumes.
+		Enfin, on précise les volumes à créer, en précisant leurs drivers.
+		
+	Question 2 : 
+		On va lancer docker-compose up.
+		Sur http://localhost:8090/, j'ai de quoi accéder à wordpress.
+		Sur http://localhost:8088/, j'ai l'image : reponse-partie4.png, soit la phrase : Bien joué ! Tu as fais ton premier DockerFile :)
+	
+	Question 3 :
+		Les logs sont très longs et un peu complexe, on peut voir quelques warnings mais rien de plus grave, ils sont human-readable mais ils semblent un peu complexe à comprendre.
+		Enfin, on lance la commande docker ps dans un nouveau terminal et on obtient l'output suivant :
+		$> CONTAINER ID   IMAGE               COMMAND                  CREATED         STATUS         PORTS                                       NAMES
+		c24932626ab2   wordpress:latest    "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:8090->80/tcp, :::8090->80/tcp       dockercompose_wordpress_1
+		b224e206b48f   dockercompose_app   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:8088->8080/tcp, :::8088->8080/tcp   dockercompose_app_1
+		2af117742291   mysql               "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   3306/tcp, 33060/tcp                         dockercompose_my_database_1
+		
+		Cela me semble cohérent, on a les deux miniservices (mysql et wordpress) et l'application principale (dockercompose).
+
+		
+		
+		
+
+		
+
+	 
+
+
+    
+    

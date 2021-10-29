@@ -598,4 +598,155 @@ Labo 4 :
         [redon-tom] Create a new file
 
 
-Labo 5 : 
+Labo 5 :
+  Question 1 :
+    On utilise :
+    git clone https://github.com/saussact/git-workflow.git
+    $> Cloning into 'git-workflow'...
+    remote: Enumerating objects: 161, done.
+    remote: Counting objects: 100% (161/161), done.
+    remote: Compressing objects: 100% (83/83), done.
+    remote: Total 161 (delta 59), reused 141 (delta 42), pack-reused 0
+    Receiving objects: 100% (161/161), 12.91 KiB | 12.91 MiB/s, done.
+    Resolving deltas: 100% (59/59), done.
+
+  Question 2 :
+    On utilise :
+    git checkout -b issue1-implement-feature-tomredon
+    $> Switched to a new branch 'issue1-implement-feature-tomredon'
+
+  Question 3 :
+    On utilise les commandes suivantes :
+    git status
+    $> On branch issue1-implement-feature-tomredon
+    nothing to commit, working tree clean
+
+    touch file1.txt
+    git add file1.txt
+    git commit -m "[redon-tom] Added file1.txt"
+    $> [issue1-implement-feature-tomredon 6d3ac37] [redon-tom] Added file1.txt
+     1 file changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 users/TomRedon/file1.txt
+
+
+    touch file2.txt
+    git add file2.txt
+    git commit -m "[redon-tom] Added file2.txt"
+    $> [issue1-implement-feature-tomredon b2f495e] [redon-tom] Added file2.txt
+     1 file changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 users/TomRedon/file2.txt
+
+    touch file3.txt
+    git add file3.txt
+    git commit -m "[redon-tom] Added file3.txt"
+    $> [issue1-implement-feature-tomredon 97e4b50] [redon-tom] Added file3.txt
+     1 file changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 users/TomRedon/file3.txt
+
+    touch file4.txt
+    git add file4.txt
+    git commit -m "[redon-tom] Added file4.txt"
+    $> [issue1-implement-feature-tomredon c2df355] [redon-tom] Added file4.txt
+     1 file changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 users/TomRedon/file4.txt
+
+  Question 4 :
+    On va utiliser les commandes suivantes :
+    git rebase -i main
+    $> [detached HEAD 72684b9] issue #01 : implement feature 1
+     Date: Thu Oct 28 11:25:54 2021 +0200
+     4 files changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 users/TomRedon/file1.txt
+     create mode 100644 users/TomRedon/file2.txt
+     create mode 100644 users/TomRedon/file3.txt
+     create mode 100644 users/TomRedon/file4.txt
+    Successfully rebased and updated refs/heads/issue1-implement-feature-tomredon.
+
+    Pour les autres questions, tout est en "interface" et a donc été réalisé comme demandé.
+
+  Question 7 :
+    On utilise :
+    git checkout main
+    $> Switched to branch 'main'
+    Your branch is up to date with 'origin/main'.
+
+    git merge issue1-implement-feature-tomredon
+    $> Updating 46af8d5..72684b9
+    Fast-forward
+     users/TomRedon/file1.txt | 0
+     users/TomRedon/file2.txt | 0
+     users/TomRedon/file3.txt | 0
+     users/TomRedon/file4.txt | 0
+     4 files changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 users/TomRedon/file1.txt
+     create mode 100644 users/TomRedon/file2.txt
+     create mode 100644 users/TomRedon/file3.txt
+     create mode 100644 users/TomRedon/file4.txt
+
+  Question 8 :
+    On utilise :
+    git fetch origin
+    $> giremote: Enumerating objects: 8, done.
+    remote: Counting objects: 100% (8/8), done.
+    remote: Compressing objects: 100% (2/2), done.
+    remote: Total 6 (delta 2), reused 6 (delta 2), pack-reused 0
+    Unpacking objects: 100% (6/6), 436 bytes | 218.00 KiB/s, done.
+    From https://github.com/saussact/git-workflow
+       46af8d5..ebbc3c7  main       -> origin/main
+
+    git rebase origin/main
+    $> First, rewinding head to replay your work on top of it...
+    Applying: issue #01 : implement feature 1
+
+    git push
+
+  Question 9 :
+    On utilise gitk --all pour observer l'interface graphique.
+
+
+Labo 6 :
+  Question 1 :
+    On va utiliser :
+    git-flow init
+    $> Which branch should be used for bringing forth production releases?
+       - master
+    Branch name for production releases: [master]
+    Branch name for "next release" development: [develop]
+
+    How to name your supporting branch prefixes?
+    Feature branches? [feature/]
+    Bugfix branches? [bugfix/]
+    Release branches? [release/]
+    Hotfix branches? [hotfix/]
+    Support branches? [support/]
+    Version tag prefix? []
+    Hooks and filters directory? [/home/tom/Documents/M2/DevOps/TP/TP1/Hello/.git/hooks]
+
+    git flow release start release-1
+    $> Switched to a new branch 'release/release-1'
+
+    Summary of actions:
+    - A new branch 'release/release-1' was created, based on 'develop'
+    - You are now on branch 'release/release-1'
+
+    Follow-up actions:
+    - Bump the version number now!
+    - Start committing last-minute fixes in preparing your release
+    - When done, run:
+
+         git flow release finish 'release-1'
+
+    git flow release publish release-1
+
+  Question 2 :
+    On va utiliser :
+      git flow feature start feature-1
+
+  Question 3 :
+    On va utiliser :
+      git flow hotfix start version-1
+      git flow hotfix finish version-1
+
+  Question 4 :
+    On va utiliser :
+      git checkout -b new-test-branch
