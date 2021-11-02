@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GeoChatRoom</string>
+    <string name="send">Send</string>
+    <string name="message">Message</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="chat">Chat</string>
+</resources>
