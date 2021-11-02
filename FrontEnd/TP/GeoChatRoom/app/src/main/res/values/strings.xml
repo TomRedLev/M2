@@ -4,5 +4,5 @@
     <string name="message">Message</string>
     <string name="longitude">Longitude</string>
     <string name="latitude">Latitude</string>
-    <string name="chat">Chat</string>
+    <string name="chat"></string>
 </resources>
