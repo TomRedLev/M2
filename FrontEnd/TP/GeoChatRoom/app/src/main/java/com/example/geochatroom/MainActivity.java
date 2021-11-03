@@ -7,22 +7,23 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,10 +66,13 @@ public class MainActivity extends AppCompatActivity {
     private List<Message> msglist = new ArrayList<>();
     private WebSocket ws;
     private String author = "Tom";
-    private FusedLocationProviderClient fusedLocationClient;
-    private float longitude = 0;
-    private float latitude = 0;
+    private float longitude = -1;
+    private float latitude = -1;
     private CustomAdapter adapter = new CustomAdapter();
+    private static final String[] LOCATION_PERMS={
+            ACCESS_FINE_LOCATION,
+            ACCESS_COARSE_LOCATION
+    };
 
 
     public void clearChatList() {
@@ -103,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         ws = startWatching("ws://localhost:2021/chat");
         sendMessage(new Message(author, latitude, longitude, "@@@hello:10@@@"));
     }
@@ -122,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rv = (RecyclerView) findViewById(R.id.chat);
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
+        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
 
         Button button = (Button) findViewById(R.id.send);
@@ -130,17 +135,24 @@ public class MainActivity extends AppCompatActivity {
                 EditText text = (EditText) findViewById(R.id.message);
                 String content = String.valueOf(text.getText());
 
-                EditText text2 = (EditText) findViewById(R.id.latitude);
-                float latitude = Float.valueOf(String.valueOf(text2.getText()));
+                if (latitude == -1) {
+                    EditText text2 = (EditText) findViewById(R.id.latitude);
+                    latitude = Float.valueOf(String.valueOf(text2.getText()));
+                }
 
-                EditText text3 = (EditText) findViewById(R.id.longitude);
-                float longitude = Float.valueOf(String.valueOf(text3.getText()));
+                if (longitude == -1) {
+                    EditText text3 = (EditText) findViewById(R.id.longitude);
+                    longitude = Float.valueOf(String.valueOf(text3.getText()));
+                }
 
                 sendMessage(new Message(author, latitude, longitude, content));
                 text.setText("");
             }
         });
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(LOCATION_PERMS, 1337);
+        }
         if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
@@ -158,5 +170,23 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(20 * 1000);
+
+        LocationCallback locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                if (locationResult == null) {
+                    return;
+                }
+                for (Location location : locationResult.getLocations()) {
+                    if (location != null) {
+                        latitude = (float) location.getLatitude();
+                        longitude = (float) location.getLongitude();
+                    }
+                }
+            }
+        };
     }
 }
