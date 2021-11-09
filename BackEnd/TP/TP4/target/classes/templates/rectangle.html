@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle Area Calculator</title>
+</head>
+<body>
+    <h1>
+        Rectangle Area Calculator
+    </h1>
+    <form th:action="@{/rectangle}" method="post">
+        <div><label for="h">Height:</label>
+            <input id="h" type="text" name="height"></div>
+
+        <div><label for="w">Width:</label>
+            <input type="text" id="w" name="width"></div>
+
+        <div><button type="submit">Compute</button></div>
+    </form>
+</body>
+</html>
