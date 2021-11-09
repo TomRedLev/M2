@@ -1,0 +1,5 @@
+fr/uge/jee/servlet/rectangle/RectangleServlet.class
+fr/uge/jee/servlet/hello/HelloServlet.class
+fr/uge/jee/servlet/hellosession/HelloSessionServlet.class
+fr/uge/jee/servlet/hellosession/HelloSessionBetterServlet.class
+fr/uge/jee/servlet/hellosession/SessionTokens.class
