@@ -1,0 +1,68 @@
+/* TP1 - Big Data - Tom REDON - Groupe Initiaux */
+
+Question 2.1 :
+scala.io.Source.fromFile("mobyDick.txt").getLines.size
+  res7: Int = 21932
+
+
+
+Question 2.2 :
+scala.io.Source.fromFile("/home/tom/Documents/M2/BigData/TP/TP1/mobyDick.txt").getLines.size //Chemin complet pour simplifier et ne pas dupliquer le fichier
+  res3: Int = 21932
+
+
+
+Question 2.3 :
+val textFile = sc.textFile("/home/tom/Documents/M2/BigData/TP/TP1/mobyDick.txt")
+  textFile: org.apache.spark.rdd.RDD[String] = /home/tom/Documents/M2/BigData/TP/TP1/mobyDick.txt MapPartitionsRDD[3] at textFile at <console>:23
+
+textFile.count()
+  res0: Long = 21932
+
+
+
+Question 2.4 :
+textFile.filter(line => line.contains("CHAPTER")).count()
+  res1: Long = 285
+
+
+
+Question 2.5 :
+textFile.filter(line => line.size == 0).count()
+  res2: Long = 3019
+
+
+
+Question 2.6 :
+val counts = textFile.flatMap(line => line.split(" ")).map(word => (word, 1)).reduceByKey((a, b) => a + b)
+counts: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[8] at reduceByKey at <console>:23
+
+counts.count()
+  res1: Long = 33087
+
+
+
+Question 2.7 :
+val df = counts.toDF("words","count")
+df.filter(col("words").contains("captain")).count() //df.filter(col("words").contains("captain")).show() pour afficher les valeurs
+  res26: Long = 19
+
+
+
+Question 2.8 :
+counts.saveAsTextFile("/home/tom/Documents/M2/BigData/TP/TP1/mobyDickWordCount.txt")
+
+OU
+
+counts.collect()
+
+
+
+Question 2.9 :
+Fait, on peut voir que les tâches sont répartis entre les coeurs du processeur, les questions sont skip si elles ont déjà été procédées précédemment.
+Le premier temps d'exécution est donc toujours plus long que les suivants.
+
+
+
+Question 2.10 :
+Fait.
