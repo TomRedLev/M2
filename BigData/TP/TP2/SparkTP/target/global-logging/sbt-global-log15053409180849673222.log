@@ -1,0 +1,123 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.5.5 (Ubuntu Java 11.0.11)
+[debug]       Load.loadUnit: plugins took 137.336789ms
+[debug]       Load.loadUnit: defsScala took 0.344688ms
+[debug] [Loading] Scanning directory /home/tom/.sbt/1.0/plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /home/tom/.sbt/1.0/plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 14.178656 ms
+[debug]           Load.resolveProject(global-plugins) took 79.280749ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: /home/tom/.sbt/1.0/plugins, plugins: List(<none>))) took 124.253931ms
+[debug] [Loading] Done in /home/tom/.sbt/1.0/plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 150.480611ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.275601ms
+[debug]     Load.loadUnit(file:/home/tom/.sbt/1.0/plugins/, ...) took 303.914238ms
+[debug]   Load.apply: load took 502.594213ms
+[debug]   Load.apply: resolveProjects took 6.442339ms
+[debug]   Load.apply: finalTransforms took 64.36252ms
+[debug]   Load.apply: config.delegates took 8.230482ms
+[debug]   Load.apply: Def.make(settings)... took 438.975895ms
+[debug]   Load.apply: structureIndex took 106.64251ms
+[debug]   Load.apply: mkStreams took 1.601154ms
+[info] loading global plugins from /home/tom/.sbt/1.0/plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 2861.765261ms
+[debug]           Load.loadUnit: plugins took 21.542293ms
+[debug]           Load.loadUnit: defsScala took 0.006458ms
+[debug] [Loading] Scanning directory /home/tom/Documents/M2/BigData/TP/TP2/SparkTP/project
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /home/tom/Documents/M2/BigData/TP/TP2/SparkTP/project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 1.741543 ms
+[debug]               Load.resolveProject(sparktp-build) took 1.477392ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id sparktp-build, base: /home/tom/Documents/M2/BigData/TP/TP2/SparkTP/project, plugins: List(<none>))) took 3.878398ms
+[debug] [Loading] Done in /home/tom/Documents/M2/BigData/TP/TP2/SparkTP/project, returning: (sparktp-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 5.523603ms
+[debug]           Load.loadUnit: cleanEvalClasses took 0.022456ms
+[debug]         Load.loadUnit(file:/home/tom/Documents/M2/BigData/TP/TP2/SparkTP/project/, ...) took 42.04289ms
+[debug]       Load.apply: load took 44.078418ms
+[debug]       Load.apply: resolveProjects took 0.119344ms
+[debug]       Load.apply: finalTransforms took 11.781433ms
+[debug]       Load.apply: config.delegates took 0.838859ms
+[debug]       Load.apply: Def.make(settings)... took 134.120967ms
+[debug]       Load.apply: structureIndex took 27.684694ms
+[debug]       Load.apply: mkStreams took 0.003361ms
+[info] loading project definition from /home/tom/Documents/M2/BigData/TP/TP2/SparkTP/project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 397.896405ms
+[debug]     Load.loadUnit: defsScala took 0.002953ms
+[debug] [Loading] Scanning directory /home/tom/Documents/M2/BigData/TP/TP2/SparkTP
+[debug]       Load.loadUnit: mkEval took 5.397138ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /home/tom/Documents/M2/BigData/TP/TP2/SparkTP, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 1.106487 ms
+[info] loading settings for project sparktp from build.sbt ...
+[debug]         Load.resolveProject(sparktp) took 3.018787ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id sparktp, base: /home/tom/Documents/M2/BigData/TP/TP2/SparkTP, plugins: List(<none>))) took 4.628133ms
+[debug] [Loading] Done in /home/tom/Documents/M2/BigData/TP/TP2/SparkTP, returning: (sparktp)
+[debug]     Load.loadUnit: loadedProjectsRaw took 92.994611ms
+[debug]     Load.loadUnit: cleanEvalClasses took 5.150247ms
+[debug]   Load.loadUnit(file:/home/tom/Documents/M2/BigData/TP/TP2/SparkTP/, ...) took 496.74417ms
+[debug] Load.apply: load took 499.151636ms
+[debug] Load.apply: resolveProjects took 0.11885ms
+[debug] Load.apply: finalTransforms took 10.431507ms
+[debug] Load.apply: config.delegates took 0.478818ms
+[debug] Load.apply: Def.make(settings)... took 140.626571ms
+[debug] Load.apply: structureIndex took 35.636399ms
+[debug] Load.apply: mkStreams took 0.003204ms
+[info] set current project to SparkTP (in build file:/home/tom/Documents/M2/BigData/TP/TP2/SparkTP/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(shell, None, None)
+[info] sbt server started at local:///home/tom/.sbt/1.0/server/548d86119bcdf61af9d1/sock
+[debug] Writing bsp connection file
+[info] started sbt server

@@ -1,3 +1,17 @@
 /* TP2 - Big Data - Tom REDON - Groupe Initiaux */
 
+/* Partie 1 : */
+Fait - J'ai du changer les versions de sbt et de Scala dans le fichier + modifier les paramètres de build de sbt (décocher library).
 
+
+
+/* Partie 2 : */
+
+/* Question 1 : */
+Voir le fichier exemples.Scala
+
+/* Question 2 : */
+
+
+/* Partie 3 : */
+Fait.
