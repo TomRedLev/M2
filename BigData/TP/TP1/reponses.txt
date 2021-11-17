@@ -47,6 +47,13 @@ val df = counts.toDF("words","count")
 df.filter(col("words").contains("captain")).count() //df.filter(col("words").contains("captain")).show() pour afficher les valeurs
   res26: Long = 19
 
+OU
+
+counts.filter(t1 => t1._1.contains("captain")).count()
+
+OU
+
+counts.keys.filter(t1 => t1.contains("captain")).count()
 
 
 Question 2.8 :
@@ -55,6 +62,10 @@ counts.saveAsTextFile("/home/tom/Documents/M2/BigData/TP/TP1/mobyDickWordCount.t
 OU
 
 counts.collect()
+
+OU
+
+val tmp = wc.map{case(w,c)=>(c,w)}.top(10)
 
 
 
