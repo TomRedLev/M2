@@ -1,0 +1,20 @@
+/* TP5 de Tom REDON - Groupe Initiaux */
+
+// Exercice 1 :
+// Question 1 et 2 :
+On crée donc un projet Maven avec le pom.xml créé et on se sert du cours pour développer l'application demandée.
+
+// Question 3 :
+On exécute la commande suivante et on obtient la réponse vue ci-dessous :
+curl -X GET http://localhost:8081/students/1
+{"uid":1,"firstName":"Tom","lastName":"Redon"}
+
+// Question 4 :
+On obtient une whitelabel error page.
+
+// Question 5 et 6 :
+Voir le code dans Application.java.
+
+
+// Exercice 2 :
+// Question 1 :
