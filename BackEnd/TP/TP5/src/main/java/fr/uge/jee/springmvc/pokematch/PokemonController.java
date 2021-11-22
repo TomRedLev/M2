@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.StringJoiner;
 
 @Controller
 public class PokemonController {
@@ -26,6 +28,17 @@ public class PokemonController {
         pokemon.setCounter();
         model.addAttribute("pokemon",pokemon.getName());
         model.addAttribute("counter", pokemon.getCounter());
+        pokelist.orderListPerCounter();
+        var sj = new StringJoiner(", ");
+        int i = 0;
+        for (var pokemonItem : pokelist.getList()) {
+            sj.add(pokemonItem.getName() + " : " + pokemonItem.getCounter());
+            if (i == 10) {
+                break;
+            }
+            i++;
+        }
+        model.addAttribute("pokemons", sj.toString());
         return "preferred-pokemon-result";
     }
 }

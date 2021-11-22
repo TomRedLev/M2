@@ -3,6 +3,7 @@ package fr.uge.jee.springmvc.pokematch;
 import org.springframework.aop.config.PointcutEntry;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class PokemonList {
@@ -35,6 +36,10 @@ public class PokemonList {
 
     public List<Pokemon> getList() {
         return pokemonList.getResults();
+    }
+
+    public void orderListPerCounter() {
+        pokemonList.getResults().sort(Comparator.comparing(Pokemon::getCounter).reversed());
     }
 
     public Pokemon getPokemonFromName(String name) {
