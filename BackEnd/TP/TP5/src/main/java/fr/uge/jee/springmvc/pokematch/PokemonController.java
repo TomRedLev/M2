@@ -28,6 +28,7 @@ public class PokemonController {
         pokemon.setCounter();
         model.addAttribute("pokemon",pokemon.getName());
         model.addAttribute("counter", pokemon.getCounter());
+        model.addAttribute("pokeimage", pokemon.getImage());
         model.addAttribute("pokemons", pokelist.getTopTen());
         return "preferred-pokemon-result";
     }

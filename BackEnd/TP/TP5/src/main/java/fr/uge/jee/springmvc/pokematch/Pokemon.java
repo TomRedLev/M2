@@ -2,6 +2,7 @@ package fr.uge.jee.springmvc.pokematch;
 
 public class Pokemon {
     private String name;
+    private String image = "";
     private int counter = 0;
 
     public Pokemon(String name) {
@@ -20,12 +21,20 @@ public class Pokemon {
         return counter;
     }
 
+    public String getImage() {
+        return image;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public void setCounter() {
         this.counter += 1;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

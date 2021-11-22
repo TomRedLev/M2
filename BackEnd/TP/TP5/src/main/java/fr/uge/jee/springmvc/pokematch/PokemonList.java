@@ -29,6 +29,12 @@ public class PokemonList {
                 pokemonList.setNext(tmp.getNext());
             }
         }
+
+        // Exercice 2 - Seconde evolution :
+        var results = pokemonList.getResults();
+        for (int i = 0; i < results.size(); i++) {
+            results.get(i).setImage("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (i + 1) + ".png");
+        }
     }
 
     public Pokemon get(long id) {
