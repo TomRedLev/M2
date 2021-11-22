@@ -28,17 +28,7 @@ public class PokemonController {
         pokemon.setCounter();
         model.addAttribute("pokemon",pokemon.getName());
         model.addAttribute("counter", pokemon.getCounter());
-        pokelist.orderListPerCounter();
-        var sj = new StringJoiner(", ");
-        int i = 0;
-        for (var pokemonItem : pokelist.getList()) {
-            sj.add(pokemonItem.getName() + " : " + pokemonItem.getCounter());
-            if (i == 10) {
-                break;
-            }
-            i++;
-        }
-        model.addAttribute("pokemons", sj.toString());
+        model.addAttribute("pokemons", pokelist.getTopTen());
         return "preferred-pokemon-result";
     }
 }

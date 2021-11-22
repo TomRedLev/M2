@@ -5,6 +5,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class PokemonList {
     private PokemonApi pokemonList;
@@ -38,8 +39,18 @@ public class PokemonList {
         return pokemonList.getResults();
     }
 
-    public void orderListPerCounter() {
+    public String getTopTen() {
         pokemonList.getResults().sort(Comparator.comparing(Pokemon::getCounter).reversed());
+        var sj = new StringJoiner(", ");
+        int i = 0;
+        for (var pokemonItem : pokemonList.getResults()) {
+            sj.add(pokemonItem.getName() + " : " + pokemonItem.getCounter());
+            if (i == 10) {
+                break;
+            }
+            i++;
+        }
+        return sj.toString();
     }
 
     public Pokemon getPokemonFromName(String name) {
