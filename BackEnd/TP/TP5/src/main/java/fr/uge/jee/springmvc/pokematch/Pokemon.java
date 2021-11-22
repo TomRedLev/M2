@@ -2,8 +2,13 @@ package fr.uge.jee.springmvc.pokematch;
 
 public class Pokemon {
     private String name;
-    private String image = "";
+    private Sprites sprites;
     private int counter = 0;
+
+    public Pokemon(String name, Sprites sprites) {
+        this.name = name;
+        this.sprites = sprites;
+    }
 
     public Pokemon(String name) {
         this.name = name;
@@ -21,8 +26,8 @@ public class Pokemon {
         return counter;
     }
 
-    public String getImage() {
-        return image;
+    public Sprites getSprites() {
+        return sprites;
     }
 
     public void setName(String name) {
@@ -33,14 +38,15 @@ public class Pokemon {
         this.counter += 1;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setSprites(Sprites image) {
+        this.sprites = image;
     }
 
     @Override
     public String toString() {
         return "Pokemon{" +
                 "name='" + name + '\'' +
+                "sprites='" + sprites + '\'' +
                 '}';
     }
 }

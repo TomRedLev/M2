@@ -1,6 +1,7 @@
 package fr.uge.jee.springmvc.pokematch;
 
 import org.springframework.aop.config.PointcutEntry;
+import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Comparator;
@@ -17,6 +18,7 @@ public class PokemonList {
                 .retrieve()
                 .bodyToMono(PokemonApi.class)
                 .block();
+
         while (pokemonList.getNext() != null) {
             PokemonApi tmp = webClient.get()
                     .uri(pokemonList.getNext())
@@ -32,8 +34,8 @@ public class PokemonList {
 
         // Exercice 2 - Seconde evolution :
         var results = pokemonList.getResults();
-        for (int i = 0; i < results.size(); i++) {
-            results.get(i).setImage("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (i + 1) + ".png");
+        for (int i = 1; i <= results.size(); i++) {
+            results.get(i - 1).setSprites(new Sprites("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + i + ".png"));
         }
     }
 
