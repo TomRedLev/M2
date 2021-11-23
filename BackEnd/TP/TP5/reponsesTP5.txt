@@ -22,4 +22,5 @@ Voir le code dans le package fr.uge.jee.springmvc.pokematch.
 
 J'ai ajouté un RestController qui permet d'accéder à la liste de pokémons, ainsi qu'à 
 chacun individuellement.
+Ceci n'est pas tout à fait finaliser dans le sens où les compteurs de la liste ne s'actualisent pas.
 J'ai aussi ajouté quelques CommandLineRunner pour continuer à apprendre à les utiliser.
