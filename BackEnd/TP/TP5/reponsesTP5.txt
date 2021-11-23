@@ -10,7 +10,7 @@ curl -X GET http://localhost:8081/students/1
 {"uid":1,"firstName":"Tom","lastName":"Redon"}
 
 // Question 4 :
-On obtient une whitelabel error page.
+On obtient une whitelabel error page, avec une erreur HTTP 404.
 
 // Question 5 et 6 :
 Voir le code dans Application.java.

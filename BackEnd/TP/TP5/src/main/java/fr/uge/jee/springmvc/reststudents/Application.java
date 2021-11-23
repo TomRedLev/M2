@@ -15,6 +15,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+    // Question 5 :
     @Bean
     public CommandLineRunner printStudent(ApplicationContext applicationContext) {
         WebClient webClient = WebClient.create();
@@ -28,6 +29,7 @@ public class Application {
         };
     }
 
+    // Vérification Question 6 :
     @Bean
     public CommandLineRunner printStudents(ApplicationContext applicationContext) {
         WebClient webClient = WebClient.create();

@@ -24,6 +24,7 @@ public class StudentRestController {
         }
     }
 
+    // Question 6 :
     @GetMapping("/students")
     public Map<Long, Student> getStudents() {
         return STUDENTS_MAP;
