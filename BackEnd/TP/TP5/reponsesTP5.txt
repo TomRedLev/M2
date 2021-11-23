@@ -20,4 +20,6 @@ Voir le code dans Application.java.
 // Question 1, 2 et 3 :
 Voir le code dans le package fr.uge.jee.springmvc.pokematch.
 
-J'ai
+J'ai ajouté un RestController qui permet d'accéder à la liste de pokémons, ainsi qu'à 
+chacun individuellement.
+J'ai aussi ajouté quelques CommandLineRunner pour continuer à apprendre à les utiliser.
