@@ -8,8 +8,13 @@
     <h1>
         Preferred Pokemon Chooser
     </h1>
-    <form th:action="@{/preferredpokemon}" method="post">
-        <div><input id="h" type="text" name="name"></div>
+    <form th:action="@{/preferredpokemon}" method="post" th:object="${name}">
+        <div><label for="fn">First Name:</label>
+            <input id="fn" type="text" th:field="*{firstName}">
+            <span  th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Invalid first name : only minus </span></div>
+        <div><label for="ln">Last Name:</label>
+            <input id="ln" type="text" th:field="*{lastName}">
+            <span  th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Invalid last name : only minus</span></div>
         <div><button type="submit">Compute</button></div>
     </form>
 </body>

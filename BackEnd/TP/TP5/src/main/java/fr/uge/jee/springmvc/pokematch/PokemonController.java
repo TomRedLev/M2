@@ -7,20 +7,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 @Controller
 public class PokemonController {
     private static final PokemonList pokelist = new PokemonList();
     @GetMapping("/preferredpokemon")
-    public String preferredPokemon() {
+    public String preferredPokemon(Model model) {
+        model.addAttribute("name", new Name());
         return "preferred-pokemon";
     }
 
     @PostMapping("/preferredpokemon")
-    public String processForm(@ModelAttribute("name") String name, BindingResult result, Model model) {
+    public String processForm(@Valid @ModelAttribute("name") Name name, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "preferred-pokemon-error";
+            return "preferred-pokemon";
         }
-        Pokemon pokemon = pokelist.getPokemonFromName(name);
+        Pokemon pokemon = pokelist.getPokemonFromName(name.getFirstName() + name.getLastName());
         pokemon.setCounter();
         model.addAttribute("pokemon",pokemon.getName());
         model.addAttribute("counter", pokemon.getCounter());

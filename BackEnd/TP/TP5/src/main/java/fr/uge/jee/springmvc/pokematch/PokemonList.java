@@ -2,6 +2,7 @@ package fr.uge.jee.springmvc.pokematch;
 
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,6 +12,8 @@ import java.util.StringJoiner;
 public class PokemonList {
     private PokemonApi pokemonapi;
     private List<Pokemon> pokemons = new ArrayList<>();
+
+    // LES I SONT RAJOUTES POUR LIMITER LES APPELS A L'API, COMME DEMANDE
 
     public PokemonList() {
         //WebClient webClient = WebClient.create();
@@ -29,8 +32,12 @@ public class PokemonList {
         /*
         System.out.println(pokemonapi);
          */
-
+        var i = 0;
         while (pokemonapi.getNext() != null) {
+            if (i == 1) {
+                break;
+            }
+
             PokemonApi tmp = webClient.get()
                     .uri(pokemonapi.getNext())
                     .retrieve()
@@ -42,17 +49,26 @@ public class PokemonList {
                 pokemonapi.setNext(tmp.getNext());
             }
 
+            i++;
+
         }
 
         // Exercice 2 - Seconde evolution :
 
         var results = pokemonapi.getResults();
+        i = 0;
         for (var pokemonurl : results) {
+            if (i == 40) {
+                break;
+            }
+
             pokemons.add(webClient.get()
                     .uri(pokemonurl.getUrl())
                     .retrieve()
                     .bodyToMono(Pokemon.class)
                     .block());
+
+            i++;
         }
     }
 

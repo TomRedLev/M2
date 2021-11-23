@@ -17,6 +17,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+    /*
     @Bean
     public CommandLineRunner printPokemon(ApplicationContext applicationContext) {
         WebClient webClient = WebClient.create();
@@ -42,4 +43,5 @@ public class Application {
             System.out.println(pokemons);
         };
     }
+     */
 }
