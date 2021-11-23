@@ -1,4 +1,4 @@
-package fr.uge.jee.springmvc.pokematch;
+package fr.uge.jee.springmvc.pokematchv1;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,9 +1,7 @@
-package fr.uge.jee.springmvc.pokematch;
+package fr.uge.jee.springmvc.pokematchv1;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
@@ -12,7 +10,7 @@ public class PokemonRestController {
 
     @GetMapping("/pokemons/{id}")
     public Pokemon getPokemon(@PathVariable("id") long id) {
-        var pokemon = POKEMONS_MAP.getList().get((int) id);
+        var pokemon = POKEMONS_MAP.get(id);
         if (pokemon==null){
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "No pokemon with id ("+id+")");

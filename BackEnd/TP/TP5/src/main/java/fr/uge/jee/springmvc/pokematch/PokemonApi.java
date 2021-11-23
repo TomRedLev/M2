@@ -1,16 +1,13 @@
 package fr.uge.jee.springmvc.pokematch;
 
-import org.springframework.web.reactive.function.client.WebClient;
-
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class PokemonApi {
-    private List<Pokemon> results = new ArrayList<>();
+    private List<PokemonURL> results = new ArrayList<>();
     private String next;
 
-    public List<Pokemon> getResults() {
+    public List<PokemonURL> getResults() {
         return results;
     }
 
@@ -18,7 +15,7 @@ public class PokemonApi {
         return next;
     }
 
-    public void setResults(List<Pokemon> results) {
+    public void setResults(List<PokemonURL> results) {
         for (var result : results) {
             this.results.add(result);
         }
@@ -28,7 +25,11 @@ public class PokemonApi {
         this.next = next;
     }
 
-    public Pokemon get(long id) {
-        return results.get((int) id);
+    @Override
+    public String toString() {
+        return "PokemonApi{" +
+                "results=" + results +
+                ", next='" + next + '\'' +
+                '}';
     }
 }
