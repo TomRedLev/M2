@@ -6,7 +6,7 @@
 </head>
 <body>
     <p th:text="'Your name is close of this Pokemon :  ' + ${pokemon}" />
-    <img th:src="${pokeimage}">
+    <img th:src="${'data:image/jpeg;charset=utf-8;base64,' + pokeimage}" alt="">
     <p th:text="'It has been displayed to this number of people :  ' + ${counter}" />
     <p th:text="'Top ten pokemons are :  ' + ${pokemons}" />
 </body>

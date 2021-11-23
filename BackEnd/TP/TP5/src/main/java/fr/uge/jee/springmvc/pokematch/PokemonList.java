@@ -92,8 +92,8 @@ public class PokemonList {
 
     public Pokemon getPokemonFromName(String name) {
         int hash = Math.abs(name.hashCode());
+        Pokemon pokemonfinal = pokemons.get(0);
         int min = 0;
-        Pokemon pokemonfinal = new Pokemon();
         for (var pokemon : pokemons) {
             int pokehash = Math.abs(pokemon.getName().hashCode());
             if ((hash - min) > (hash - pokehash) && (hash - pokehash) >= 0) {

@@ -8,7 +8,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class PokemonRestController {
-    /*
     private static final PokemonList POKEMONS_MAP = new PokemonList();
 
     @GetMapping("/pokemons/{id}")
@@ -26,5 +25,4 @@ public class PokemonRestController {
     public PokemonList getPokemon() {
         return POKEMONS_MAP;
     }
-     */
 }
