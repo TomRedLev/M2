@@ -9,6 +9,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Map;
 
+// L'application prend 55 secondes à se déployer.
+
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {

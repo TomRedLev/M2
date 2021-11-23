@@ -26,7 +26,9 @@ public class PokemonList {
                 .bodyToMono(PokemonApi.class)
                 .block();
 
+        /*
         System.out.println(pokemonapi);
+         */
 
         while (pokemonapi.getNext() != null) {
             PokemonApi tmp = webClient.get()
@@ -73,15 +75,17 @@ public class PokemonList {
     }
 
     public Pokemon getPokemonFromName(String name) {
-        int hash = name.hashCode();
+        int hash = Math.abs(name.hashCode());
         int min = 0;
         Pokemon pokemonfinal = new Pokemon();
         for (var pokemon : pokemons) {
-            if (hash - min > hash - pokemon.getName().hashCode()) {
-                min = pokemon.getName().hashCode();
+            int pokehash = Math.abs(pokemon.getName().hashCode());
+            if ((hash - min) > (hash - pokehash) && (hash - pokehash) >= 0) {
+                min = Math.abs(pokemon.getName().hashCode());
                 pokemonfinal = pokemon;
             }
         }
+        System.out.println(hash - min);
         return pokemonfinal;
     }
 }
