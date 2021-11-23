@@ -1,11 +1,14 @@
 package fr.uge.jee.springmvc.rectangle;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 public class Rectangle {
     @NotNull
+    @Min(0)
     private int height;
     @NotNull
+    @Min(0)
     private int width;
 
     public int area() {
