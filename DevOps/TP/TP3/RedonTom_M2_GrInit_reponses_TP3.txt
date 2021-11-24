@@ -1,0 +1,477 @@
+/* TP3 DevOps - Tom Redon - Groupe Initiaux - M2 */
+
+Partie 0 :
+	J'ai installé minikube et kubectl au préalable, comme demandé.
+	
+	
+	
+	
+	
+Partie 1 :
+	Question 1 : 
+		Les pods sont situés dans les nodes.
+		Le pod est un environnement d'exécution d'un ou de plusieurs conteneurs docker.
+		Le master dira quel node va faire tourner un pod non-ordonnancé en se basant 
+		sur la disponibilité des resssources.
+		Il existe un partage de ressources entre les containers d'un même pod, on va
+		parler de la notion de volume et de ressources pods.
+		Cela permet de conserver des données au delà du cycle de vie d'un conteneur
+		et de partager les données entre des containers dans un même pod, comme dit
+		précédemment.
+	
+	Question 2 : 
+		Un node est un noeud esclave qui sont des machines hébergeant les conteneurs
+		qui exécutent les tâches qui leur sont assignées.
+	
+	Question 3 :
+		K8S permet d'orchestrer et de gérer des conteneurs sur des clusters 
+		de serveurs.
+		K8S prend en charge plusieur kernels et permet donc de pouvoir gérer 
+		les conteneurs sur ces différents serveurs hôtes (physiques ou virtuels).
+		On peut donc créer des services applicatifs sur plusieurs conteneurs,
+		planifier leur exécution dans un cluster, garantir l'intégrité et 
+		assurer le monitoring.
+		
+	Question 4 : 
+		Le développeur n'a plus qu'à s'occuper de son environnement d'exécution 
+		(le conteneur). C'est K8S qui s'occupe des couches infrastructure 
+		sous-jacentes.
+		
+	Question 5 : 
+		Un kubelet est un composant exécuté sur des noeuds et qui s'assure que les
+		conteneurs définis ont démarrés et fonctionnent comme prévu.
+		Si le conteneur tombe, c'est le composant Kubelet qui le signalera au Master.
+		(Le master gère donc aussi la résilience des pods, en vérifiant le nombre de
+		copies identiques demandées d'un pod qui doivent s'exécuter dans le cluster.)
+		
+	Question 6 : 
+		Un service dans K8S est un point d'entrée permettant un accès load balancé
+		à un groupe de conteneurs identiques.
+		On peut dire que c'est une Virtual IP. Kubernetes va fournir un service de 
+		routage en assignant une adresse IP et un nom de domaine à un service et va 
+		équilibrer la charge du trafic vers différents nodes.
+		Les requêtes de services sont alors transférés par Kubernetes vers des
+		pods de service.
+		Les services correspondent à des tiers applicatifs (FrontEnd ou BackEnd).
+		
+	Question 7 : 
+		EKS est le nom donné par AWS à son intégration de K8S dans son catalogue.
+		(Elastic Kubernetes Service).
+		SWARM est l'orchestrateur "maison" de Docker (Docker Swarm), qui est en 
+		concurrence avec K8S. Docker laisse cependant la possibilité de choisir entre
+		K8S et Swarm.
+		
+
+Partie 2 : 
+	Question 1 : 
+		Minikube est un outil qui fait tourner un cluster Kubernetes unique
+		dans une machine virtuelle sur la machine.
+		
+	Question 2 : 
+		On lance la commande suivante et on obtient la sortie suivante :  
+		>$ minikube start
+		
+		minikube v1.23.2 on Ubuntu 20.04
+		Using the kvm2 driver based on user configuration
+		minikube 1.24.0 is available! Download it: 
+		https://github.com/kubernetes/minikube/releases/tag/v1.24.0
+		To disable this notice, run: 'minikube config set 
+		WantUpdateNotification false'
+		Starting control plane node minikube in cluster minikube
+		Creating kvm2 VM (CPUs=2, Memory=2200MB, Disk=20000MB) ...
+		Preparing Kubernetes v1.22.2 on Docker 20.10.8 ...
+			Generating certificates and keys ...
+			Booting up control plane ...
+			Configuring RBAC rules ...
+			Verifying Kubernetes components...
+			Using image gcr.io/k8s-minikube/storage-provisioner:v5
+		Enabled addons: storage-provisioner, default-storageclass
+		Done! kubectl is now configured to use "minikube" cluster and 
+		"default" namespace by default
+	
+	Question 3 et 4 : 
+		On exécute la commande minikube dashboard.
+		Cela ouvre une interface de K8S sur un navigateur web.
+		Rien n'est affiché sur la page d'accueil.
+		On a une sidebar contenant plusieurs catégories :
+		Workloads, Service, Config and Storage, Cluster 
+		et Custom Resource Definitions.
+		On peut revoir des mots clés comme Jobs, Pods, Services, Nodes présents comme 
+		éléments de ces catégories.
+		Toutes les sous-catégories semblent vides pour le moment.
+	
+	
+	
+		
+
+Partie 3 : 
+	Question 1 :
+		Un déploiement est un objet de typ ressource qui fournit 
+		des mises à jour déclaratives pour des Pods et des ReplicaSets (applications).
+		Cela permet d'automatiser le processus de mise-à-jour et de le rendre
+		reproductible. 
+		
+	Question 2 :
+		On exécute la commande suivante et on obtient la sortie suivante : 
+		$> kubectl get deployments
+		No resources found in default namespace.
+		
+	Question 3 : 
+		On exécute les commandes suivantes : 
+		$> kubectl create deployment my-app-js --image=tsaussac/node-app
+		deployment.apps/my-app-js created
+		
+		$> kubectl get deployment
+		NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+		my-app-js   0/1     1            0           26s
+		
+		Le déploiement semble lancer.
+		
+	Question 4  :
+		Dans Workloads, on peut voir qu'un deployment (my-app-js), 
+		un pod (my-app-js-b8cb95594-lk9s7) et un replica set (my-app-js-b8cb95594)
+		ont été ajoutés.
+		Dans Service, on peut voir qu'un service à été ajouté (Kubernetes).
+		Dans Config and Storage, on peut voir qu'une config map est disponible
+		(kube-root-ca.crt), un secret est accessible (default-token-gdm9q) et une 
+		storage classes à été créée (standard).
+		Dans Cluster, on peut voir de nombreux cluster role bindings disponibles
+		(kubernetes-dashboard, storage-provisioner, ...), ainsi que des cluster
+		roles, des namespaces, un node (minikube) et un service account (default).
+		Il n'y a toujours rien dans Custom Resource Definitions.
+		
+	Question 5 :
+		On exécute la commande : 
+		$> kubectl get pods
+		NAME                        READY   STATUS    RESTARTS   AGE
+		my-app-js-b8cb95594-lk9s7   1/1     Running   0          14m
+		
+		Le pod est donc bien en status "Running".
+		
+	Question 6 : 
+		On exécute les commandes utiles montrées :
+		$> kubectl config view
+		apiVersion: v1
+		clusters:
+		- cluster:
+		    certificate-authority: /home/tom/.minikube/ca.crt
+		    extensions:
+		    - extension:
+			last-update: Wed, 24 Nov 2021 15:25:13 CET
+			provider: minikube.sigs.k8s.io
+			version: v1.23.2
+		      name: cluster_info
+		    server: https://192.168.39.18:8443
+		  name: minikube
+		contexts:
+		- context:
+		    cluster: minikube
+		    extensions:
+		    - extension:
+			last-update: Wed, 24 Nov 2021 15:25:13 CET
+			provider: minikube.sigs.k8s.io
+			version: v1.23.2
+		      name: context_info
+		    namespace: default
+		    user: minikube
+		  name: minikube
+		current-context: minikube
+		kind: Config
+		preferences: {}
+		users:
+		- name: minikube
+		  user:
+		    client-certificate: /home/tom/.minikube/profiles/minikube/client.crt
+		    client-key: /home/tom/.minikube/profiles/minikube/client.key
+		    
+		$> kubectl get events
+		LAST SEEN   TYPE     REASON                    
+		OBJECT                           MESSAGE
+		28m         Normal   NodeHasSufficientMemory   node/
+		minikube                    Node minikube status is now: 
+		NodeHasSufficientMemory
+		28m         Normal   NodeHasNoDiskPressure     node/
+		minikube                    Node minikube status is now: 
+		NodeHasNoDiskPressure
+		28m         Normal   NodeHasSufficientPID      node/
+		minikube                    Node minikube status is now: NodeHasSufficientPID
+		28m         Normal   Starting                  node/
+		minikube                    Starting kubelet.
+		28m         Normal   NodeHasSufficientMemory   node/
+		minikube                    Node minikube status is now: 
+		NodeHasSufficientMemory
+		28m         Normal   NodeHasNoDiskPressure     node/
+		minikube                    Node minikube status is now: NodeHasNoDiskPressure
+		28m         Normal   NodeHasSufficientPID      node/
+		minikube                    Node minikube status is now: NodeHasSufficientPID
+		28m         Normal   NodeAllocatableEnforced   node/
+		minikube                    Updated Node Allocatable limit across pods
+		28m         Normal   NodeReady                 node/
+		minikube                    Node minikube status is now: NodeReady
+		28m         Normal   RegisteredNode            node/
+		minikube                    Node minikube event: Registered Node minikube in 
+		Controller
+		16m         Normal   Scheduled                 pod/my-app-js-b8cb95594-
+		lk9s7    Successfully assigned default/my-app-js-b8cb95594-lk9s7 to minikube
+		16m         Normal   Pulling                   pod/my-app-js-b8cb95594-
+		lk9s7    Pulling image "tsaussac/node-app"
+		2m17s       Normal   Pulled                    pod/my-app-js-b8cb95594-
+		lk9s7    Successfully pulled image "tsaussac/node-app" in 13m43.437551252s
+		2m17s       Normal   Created                   pod/my-app-js-b8cb95594-
+		lk9s7    Created container node-app
+		2m17s       Normal   Started                   pod/my-app-js-b8cb95594-
+		lk9s7    Started container node-app
+		16m         Normal   SuccessfulCreate          replicaset/my-app-js-
+		b8cb95594   Created pod: my-app-js-b8cb95594-lk9s7
+		16m         Normal   ScalingReplicaSet         deployment/my-app-js
+		
+		$> kubectl cluster-info
+		Kubernetes control plane is running at https://192.168.39.18:8443
+		CoreDNS is running at 
+		https://192.168.39.18:8443/api/v1/namespaces/kube-system/
+		services/kube-dns:dns/proxy
+		To further debug and diagnose cluster problems, 
+		use 'kubectl cluster-info dump'.
+		
+		Cette dernière commande nous permet d'obtenir les addresses du
+		Kubernetes control plane et du coreDNS, ainsi que leur status.
+	
+	
+	
+		
+		
+Partie 4 : 
+	Question 1 : 
+		On exécute la commande suivante : 
+		$> kubectl expose deployment my-app-js --type=LoadBalancer --port=8080
+		service/my-app-js exposed
+	
+	Question 2 : 
+		On voit bien le service my-app-js disponible dans la catégorie Service du
+		dashboard.
+		On exécute la commande suivante : 
+		$> kubectl get services
+		NAME         TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+		kubernetes   ClusterIP      10.96.0.1      <none>        443/TCP          33m
+		my-app-js    LoadBalancer   10.103.128.1   <pending>     8080:31278/TCP   50s
+	
+
+	Question 3 : 
+		On exécute la commande suivante : 
+		$> minikube service my-app-js
+		
+		On obtient l'affichage suivant dans le terminal :
+		|-----------|-----------|-------------|----------------------------|
+		| NAMESPACE |   NAME    | TARGET PORT |            URL             |
+		|-----------|-----------|-------------|----------------------------|
+		| default   | my-app-js |        8080 | http://192.168.39.18:31278 |
+		|-----------|-----------|-------------|----------------------------|
+		Opening service default/my-app-js in default browser...
+		
+		Une fenêtre s'ouvre dans le navigateur web à l'addresse 
+		http://192.168.39.18:31278/ et affiche le message : 
+		Bien joué ! Tu as fais ton premier DockerFile :)
+		
+	
+	
+	
+		
+Partie 5 : 
+	Question 1 : 
+		On appelle la commande suivante et on obtient l'affichage terminal suivant :
+		$>  minikube addons list
+		|-----------------------------|----------|--------------|-----------------------|
+		|         ADDON NAME          | PROFILE  |    STATUS    |      MAINTAINER       |
+		|-----------------------------|----------|--------------|-----------------------|
+		| ambassador                  | minikube | disabled     | unknown (third-party) |
+		| auto-pause                  | minikube | disabled     | google                |
+		| csi-hostpath-driver         | minikube | disabled     | kubernetes            |
+		| dashboard                   | minikube | enabled      | kubernetes            |
+		| default-storageclass        | minikube | enabled      | kubernetes            |
+		| efk                         | minikube | disabled     | unknown (third-party) |
+		| freshpod                    | minikube | disabled     | google                |
+		| gcp-auth                    | minikube | disabled     | google                |
+		| gvisor                      | minikube | disabled     | google                |
+		| helm-tiller                 | minikube | disabled     | unknown (third-party) |
+		| ingress                     | minikube | disabled     | unknown (third-party) |
+		| ingress-dns                 | minikube | disabled     | unknown (third-party) |
+		| istio                       | minikube | disabled     | unknown (third-party) |
+		| istio-provisioner           | minikube | disabled     | unknown (third-party) |
+		| kubevirt                    | minikube | disabled     | unknown (third-party) |
+		| logviewer                   | minikube | disabled     | google                |
+		| metallb                     | minikube | disabled     | unknown (third-party) |
+		| metrics-server              | minikube | disabled     | kubernetes            |
+		| nvidia-driver-installer     | minikube | disabled     | google                |
+		| nvidia-gpu-device-plugin    | minikube | disabled     | unknown (third-party) |
+		| olm                         | minikube | disabled     | unknown (third-party) |
+		| pod-security-policy         | minikube | disabled     | unknown (third-party) |
+		| portainer                   | minikube | disabled     | portainer.io          |
+		| registry                    | minikube | disabled     | google                |
+		| registry-aliases            | minikube | disabled     | unknown (third-party) |
+		| registry-creds              | minikube | disabled     | unknown (third-party) |
+		| storage-provisioner         | minikube | enabled      | kubernetes            |
+		| storage-provisioner-gluster | minikube | disabled     | unknown (third-party) |
+		| volumesnapshots             | minikube | disabled     | kubernetes            |
+		|-----------------------------|----------|--------------|-----------------------|
+		
+		On peut voir les addons cités : istio, logviewer, metrics-server mais ils sont disabled.
+		
+	Question 2 : 
+		On exécute les commandes suivantes :
+		$> minikube addons enable metrics-server
+		Using image k8s.gcr.io/metrics-server/metrics-server:v0.4.2
+		The 'metrics-server' addon is enabled
+		
+		$> kubectl get pod,svc -n kube-system
+		NAME                                   READY   STATUS    RESTARTS      AGE
+		pod/coredns-78fcd69978-df24j           1/1     Running   0             41m
+		pod/etcd-minikube                      1/1     Running   0             41m
+		pod/kube-apiserver-minikube            1/1     Running   0             41m
+		pod/kube-controller-manager-minikube   1/1     Running   0             41m
+		pod/kube-proxy-qf499                   1/1     Running   0             41m
+		pod/kube-scheduler-minikube            1/1     Running   0             41m
+		pod/metrics-server-77c99ccb96-7mbx6    1/1     Running   0             49s
+		pod/storage-provisioner                1/1     Running   1 (41m ago)   41m
+
+		NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                  AGE
+		service/kube-dns         ClusterIP   10.96.0.10      <none>        53/UDP,53/TCP,9153/TCP   41m
+		service/metrics-server   ClusterIP   10.105.101.12   <none>        443/TCP                  49s
+		
+
+
+
+
+Partie 6 : 
+	Question 1 : 
+		On exécute les commandes suivantes : 
+		$> kubectl scale -n default deployment my-app-js --replicas=5
+		deployment.apps/my-app-js scaled
+		
+		$> kubectl get pods
+		NAME                        READY   STATUS    RESTARTS   AGE
+		my-app-js-b8cb95594-bb2qv   1/1     Running   0          62s
+		my-app-js-b8cb95594-hdqhl   1/1     Running   0          62s
+		my-app-js-b8cb95594-lk9s7   1/1     Running   0          31m
+		my-app-js-b8cb95594-nfttl   1/1     Running   0          62s
+		my-app-js-b8cb95594-xcqnl   1/1     Running   0          62s
+		
+		On a bien 5 pods de la même application, qui sont tous en status Running, 
+		cela semble donc cohérent.
+		
+
+
+
+
+Partie 7 : 
+	Question 1 : 
+		On exécute la commande : 
+		$> kubectl get deployment my-app-js -o yaml > my-app-js.yml
+		
+		Un fichier YAML est créé dans le dossier où je me situe.
+		Cela permet d'avoir le fichier de configuration en local, et de pouvoir le modifier facilement.
+		Il est de plus dans un langage human-readable, ce qui en fait un outil simple à utiliser et 
+		à comprendre, une fois les bases prises en main.
+		On peut aussi se servir de fichier de ce type pour faire communiquer des données ou bien
+		encore sauvegarder dans un certain état l'application.
+		
+		On peut voir de nombreuses informations utiles dans ce fichier comme le fait qu'il indique 
+		le nombre de pods identiques de cette application, les versions utilisées, les dates de
+		dernière transition, update, ...
+		
+		On pourra donc facilement accéder à ses informations et/ou les modifier.
+		
+		
+Partie 8 : 
+	Question 1 : 
+		On va exécuter les commandes suivantes et les décrire à chaque fois :
+		$> kubectl create deployment mynginxapp --image=nginx:latest
+		deployment.apps/mynginxapp created
+		
+		Cette commande permet de créer un nouveau déploiement d'une application mynginxapp qui se base 
+		sur l'image nginx:latest.
+		
+		$> kubectl expose deployment mynginxapp --type=NodePort --port=80
+		service/mynginxapp exposed
+		
+		Cette commande permet d'exposer le déploiement sur le port 80. 
+		Elle rend donc le service mynginxapp disponible.
+		
+		$> minikube service mynginxapp --url
+		http://192.168.39.18:32185
+		
+		Cette dernière commande permet d'obtenir l'url à laquelle le service est disponible.
+		Si l'on clique sur le lien, on est envoyé vers la page d'accueil de nginx.
+		
+	
+	Question 2 :
+		On va essayer d'accéder à un pod en éxecutant les commandes suivantes :
+		$> kubectl get pods
+		NAME                          READY   STATUS    RESTARTS   AGE
+		my-app-js-b8cb95594-bb2qv     1/1     Running   0          23m
+		my-app-js-b8cb95594-hdqhl     1/1     Running   0          23m
+		my-app-js-b8cb95594-lk9s7     1/1     Running   0          54m
+		my-app-js-b8cb95594-nfttl     1/1     Running   0          23m
+		my-app-js-b8cb95594-xcqnl     1/1     Running   0          23m
+		mynginxapp-5d9b94449d-n6t9x   1/1     Running   0          12m
+		
+		$> kubectl exec -ti mynginxapp-5d9b94449d-n6t9x bash
+		kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. 
+		Use kubectl exec [POD] -- [COMMAND] instead.
+		root@mynginxapp-5d9b94449d-n6t9x:/# cd /usr/share/nginx/html
+		root@mynginxapp-5d9b94449d-n6t9x:/usr/share/nginx/html# ls
+		50x.html  index.html
+		root@mynginxapp-5d9b94449d-n6t9x:/usr/share/nginx/html# rm index.html
+		root@mynginxapp-5d9b94449d-n6t9x:/usr/share/nginx/html# echo 
+		"Vu que je suis rigoureux j'enverrai mon TP en temps et en heure..." > index.html
+		root@mynginxapp-5d9b94449d-n6t9x:/usr/share/nginx/html# exit
+		exit
+		
+		On arrive donc ici après la suite de commande dans le bash du pod.
+		On cherche à obtenir l'url du service avec la commande suivante : 
+		$> minikube service mynginxapp --url
+		http://192.168.39.18:32185
+		
+		En se connectant à la page http://192.168.39.18:32185/index.html
+		On peut voir le message : 
+		Vu que je suis rigoureux j'enverrai mon TP en temps et en heure...
+		
+
+
+
+
+Partie 9 : 
+	Question 1 : 
+		On va nettoyer les ressources en exécutant les commandes suivantes : 
+		$> kubectl delete service my-app-js
+		service "my-app-js" deleted
+		
+		$> kubectl delete deployment my-app-js
+		deployment.apps "my-app-js" deleted
+		
+		$> minikube stop
+		Stopping node "minikube"  ...
+		1 nodes stopped.
+		
+		$> minikube delete
+		Deleting "minikube" in kvm2 ...
+		Removed all traces of the "minikube" cluster.
+		
+
+
+
+
+Partie 10 :
+	Question 1 :
+		Le TP était vraiment intéressant, ça m'a permis d'avoir un premier contact avec K8S, que
+		je n'avais jamais utilisé auparavant. Cela a l'air très puissant et utile dans le monde
+		professionnel.
+		
+	Question 2 : 
+		N'ayant qu'entendu parler de K8S par des professionnels sans avoir d'explications concrètes
+		avant ce cours, j'ai pu appréhender et comprendre ce qu'était K8S et comment il fonctionnait.
+		
+	Question 3 : 
+		Le TP était très compréhensible dans sa structure, pour moi, il n'y a pas de modifications à
+		apporter. 
+	
+
