@@ -1,0 +1,17 @@
+/* TP3 DevOps - Tom Redon - Groupe Initiaux - M2 */
+
+KubeConfig :
+	Préambule :
+		Je repars d'un minikube delete.
+		Les résultats vides
+
+	Question 1 :
+		kubectl config get-users
+		NAME
+
+	Question 2 :
+		kubectl config get-clusters
+		NAME
+
+	Question 3 :
+		config set-context TOTO --cluster test --user tomredlev (--namespace=MON_NAMESPACE)

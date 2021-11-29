@@ -1,0 +1,12 @@
+/* Tom Redon - M2 Logiciel - TP7 BackEnd */
+
+/* Exercice 1 : */
+Téléchargement puis utilisation de la commande donnée :
+
+java -cp h2-1.4.200.jar org.h2.tools.Server -ifNotExists &
+
+La fenêtre s'est ouverte automatiquement.
+
+/* Exercice 2 : */
+On suit les instructions et on obtient bien la bonne insertion de l'employe
+Harry Potter, gagnant 1000 euros par mois.
