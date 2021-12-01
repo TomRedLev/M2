@@ -112,7 +112,7 @@ public class EmployeeRepository {
 
     public Optional<Employee> get(long id) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        Query query = em.createQuery("SELECT e FROM Student e WHERE e.id= :id");
+        Query query = em.createQuery("SELECT e FROM Employee e WHERE e.id= :id");
         query.setParameter("id", id);
         Employee res = (Employee) query.getSingleResult();
         em.close();
@@ -125,7 +125,7 @@ public class EmployeeRepository {
 
     public List<Employee> getAll() {
         EntityManager em = entityManagerFactory.createEntityManager();
-        Query query = em.createQuery("SELECT e FROM Student e");
+        Query query = em.createQuery("SELECT e FROM Employee e");
         List<Employee> res = query.getResultList();
         em.close();
         return res;
@@ -133,7 +133,7 @@ public class EmployeeRepository {
 
     List<Employee> getAllByFirstName(String firstName) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        Query query = em.createQuery("SELECT e FROM Student e WHERE e.firstName= :fn");
+        Query query = em.createQuery("SELECT e FROM Employee e WHERE e.firstName= :fn");
         query.setParameter("fn", firstName);
         List<Employee> res = query.getResultList();
         em.close();

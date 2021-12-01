@@ -22,7 +22,7 @@ public class Student {
     private University university;
     @OneToMany(targetEntity = Comment.class, fetch = FetchType.EAGER)
     private List<Comment> comments;
-    @OneToMany(targetEntity = Lecture.class, fetch = FetchType.EAGER)
+    @ManyToMany(targetEntity = Lecture.class, fetch = FetchType.EAGER)
     private Set<Lecture> lectures;
 
 

@@ -1,45 +1,45 @@
 package fr.uge.jee.hibernate.students;
 
+import java.util.HashSet;
+
 public class Application {
     public static void main(String[] args) {
         AddressRepository ar = new AddressRepository();
-        ar.create(1, "rue saint-bon", "Paris", "France");
-
         UniversityRepository ur = new UniversityRepository();
+        CommentRepository cr = new CommentRepository();
+        LectureRepository lr = new LectureRepository();
+        StudentRepository sr = new StudentRepository();
+
+        ar.create(1, "rue saint-bon", "Paris", "France");
         ur.create("UGE");
         ur.delete(2L);
         ur.create("UGE-modified");
-
-        CommentRepository cr = new CommentRepository();
         cr.create("Mr. Bouin", "mauvais élève");
-
-        LectureRepository lr = new LectureRepository();
         lr.create("Mr. Bouin", "BackEnd");
         lr.delete(5L);
         lr.create("Mr. Bouin", "BackEnd-modified");
-
-        StudentRepository sr = new StudentRepository();
+        lr.create("Mr. Carayol", "Design Pattern");
         sr.create("Tom", "Redon", ar.get(1L).get(), ur.get(3L).get());
+        sr.addComment(8L, cr.get(4L).get());
+        sr.addLecture(8L, lr.get(6L).get());
+        sr.addLecture(8L, lr.get(7L).get());
 
-        sr.addComment(7L, cr.get(4L).get());
-        sr.addLecture(7L, lr.get(6L).get());
-
-
-        System.out.println(ar.getAll());
-        System.out.println(ur.getAll());
-        System.out.println(cr.getAll());
-        System.out.println(lr.getAll());
         System.out.println(sr.getAll());
-
-        sr.deleteComment(7L, cr.get(4L).get().getId());
+        sr.deleteComment(8L, cr.get(4L).get().getId());
         ur.create("ESIPE");
-        sr.updateUniversity(7L, ur.get(8L).get());
+        sr.updateUniversity(8L, ur.get(9L).get());
         ar.create(6, "rue saint-bon", "Paris", "France");
-        sr.updateAddress(7L, ar.get(9L).get());
-
+        sr.updateAddress(8L, ar.get(10L).get());
         System.out.println(sr.getAll());
+
+        ar.create(2, "rue du test", "Serris", "France");
+        ur.create("université-test");
+        cr.create("Mr. Carayol", "bon élève");
+        sr.create("Julien", "Mercier", ar.get(11L).get(), ur.get(12L).get());
+        sr.addComment(14L, cr.get(13L).get());
+        sr.addLecture(14L, lr.get(7L).get());
 
         System.out.println(sr.getStudentsOfLecture(lr.get(6L).get()));
-        System.out.println(sr.getLecturesOfAStudent(7L));
+        System.out.println(sr.getLecturesOfAStudent(8L));
     }
 }
