@@ -1,0 +1,14 @@
+/* TP2 - Big Data - Tom REDON - Groupe Initiaux */
+
+/* Partie 1 : */
+/* Question 1 : */
+Fait - création compte databricks.
+
+/* Question 2 : */
+J'entre les commandes dans un notebook et je les exécute.
+
+/* Partie 2 : */
+Fait - TP2 réalisé.
+
+/* Partie 3 : */
+
