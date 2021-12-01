@@ -1,5 +1,7 @@
 package fr.uge.jee.hibernate.students;
 
+import com.sun.nio.sctp.PeerAddressChangeNotification;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -9,10 +11,10 @@ import java.util.Optional;
 public class StudentRepository {
     private final EntityManagerFactory entityManagerFactory = PersistenceUtils.getEntityManagerFactory();
 
-    public long create(String firstName, String lastName) {
+    public long create(String firstName, String lastName, Address address) {
         EntityManager em = entityManagerFactory.createEntityManager();
         var tx = em.getTransaction();
-        var student = new Student(firstName, lastName);
+        var student = new Student(firstName, lastName, address);
         try{
             tx.begin();
             em.persist(student);

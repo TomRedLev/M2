@@ -15,7 +15,7 @@ public class Application {
         lr.create("Mr. Bouin", "BackEnd");
 
         StudentRepository sr = new StudentRepository();
-        sr.create("Tom", "Redon");
+        sr.create("Tom", "Redon", ar.get(1L).get());
 
 
         System.out.println(ar.getAll());

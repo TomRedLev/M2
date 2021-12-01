@@ -12,12 +12,15 @@ public class Student {
     private String firstName;
     @Column(name = "lastname")
     private String lastName;
-    
+    @OneToOne(targetEntity=Address.class)
+    private Address address;
+
     public Student() {}
 
-    public Student(String firstName, String lastName) {
+    public Student(String firstName, String lastName, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.address = address;
     }
 
     public long getId() {
@@ -44,12 +47,21 @@ public class Student {
         this.lastName = lastName;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address +
                 '}';
     }
 }
