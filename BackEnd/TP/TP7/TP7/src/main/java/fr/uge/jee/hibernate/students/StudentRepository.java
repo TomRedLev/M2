@@ -142,7 +142,8 @@ public class StudentRepository {
     public List<Student> getStudentsOfLecture(Lecture lecture) {
         EntityManager em = entityManagerFactory.createEntityManager();
         var lid = lecture.getId();
-        Query query = em.createQuery("Select s FROM Student as s inner join s.lectures as l WHERE l.id = :lid "); // A modifier
+        Query query = em.createQuery("Select s FROM Student as s inner join s.lectures as l WHERE l.id = :lid ");
+        // On peut utiliser nativeQuery pour accéder à toutes les tables de la base (dont Students_lectures)
         query.setParameter("lid", lid);
         var res = query.getResultList();
         em.close();
@@ -151,7 +152,7 @@ public class StudentRepository {
 
     public List<Lecture> getLecturesOfAStudent(long id) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        Query query = em.createQuery("SELECT s.lectures FROM Student s WHERE s.id= :id"); // A modifier
+        Query query = em.createQuery("SELECT s.lectures FROM Student s WHERE s.id= :id");
         query.setParameter("id", id);
         var res = query.getResultList();
         em.close();
