@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ChronoGame</string>
+    <string name="stop">Stop !</string>
+    <string name="time">10</string>
+    <string name="start">Start !</string>
+    <string name="display">display</string>
+    <string name="todo">TODO</string>
+</resources>
