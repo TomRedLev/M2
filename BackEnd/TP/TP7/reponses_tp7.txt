@@ -10,3 +10,6 @@ La fenêtre s'est ouverte automatiquement.
 /* Exercice 2 : */
 On suit les instructions et on obtient bien la bonne insertion de l'employe
 Harry Potter, gagnant 1000 euros par mois.
+
+/* Exercice 3 - 4 - 5 : */
+Toutes les réponses se situent dans les package employees et students.

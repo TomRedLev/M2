@@ -7,7 +7,7 @@ public class PersistenceUtils {
     static final EntityManagerFactory ENTITY_MANAGER_FACTORY
             = Persistence.createEntityManagerFactory("main-persistence-unit");
 
-    static EntityManagerFactory getEntityManagerFactory(){
+    public static EntityManagerFactory getEntityManagerFactory(){
         return ENTITY_MANAGER_FACTORY;
     }
 }

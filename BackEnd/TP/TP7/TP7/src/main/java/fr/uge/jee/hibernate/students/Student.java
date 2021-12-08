@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+// Réponses à l'exercice 3 et 4 dans ce fichier.
+
 @Entity
 @Table(name = "Students")
 public class Student {
@@ -16,12 +18,16 @@ public class Student {
     private String firstName;
     @Column(name = "lastname")
     private String lastName;
+    // ManyToOne est possible ici aussi.
     @OneToOne(cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REMOVE}, targetEntity = Address.class, fetch = FetchType.EAGER, orphanRemoval=true)
     private Address address;
+    //@OneToOne(targetEntity = University.class, fetch = FetchType.EAGER)
     @ManyToOne(targetEntity = University.class, fetch = FetchType.EAGER)
     private University university;
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, targetEntity = Comment.class, fetch = FetchType.EAGER, orphanRemoval=true)
+    //@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, targetEntity = Comment.class, fetch = FetchType.EAGER, orphanRemoval=true)
+    @ManyToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, targetEntity = Comment.class, fetch = FetchType.EAGER)
     private List<Comment> comments;
+    //@OneToMany(targetEntity = Lecture.class, fetch = FetchType.EAGER, orphanRemoval=true) // Cela rend impossible d'avoir plus étudiants dans le même cours.
     @ManyToMany(targetEntity = Lecture.class, fetch = FetchType.EAGER)
     private Set<Lecture> lectures;
 
