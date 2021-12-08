@@ -24,10 +24,8 @@ public class Student {
     //@OneToOne(targetEntity = University.class, fetch = FetchType.EAGER)
     @ManyToOne(targetEntity = University.class, fetch = FetchType.EAGER)
     private University university;
-    //@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, targetEntity = Comment.class, fetch = FetchType.EAGER, orphanRemoval=true)
-    @ManyToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, targetEntity = Comment.class, fetch = FetchType.EAGER)
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, targetEntity = Comment.class, fetch = FetchType.EAGER, orphanRemoval=true)
     private List<Comment> comments;
-    //@OneToMany(targetEntity = Lecture.class, fetch = FetchType.EAGER, orphanRemoval=true) // Cela rend impossible d'avoir plus étudiants dans le même cours.
     @ManyToMany(targetEntity = Lecture.class, fetch = FetchType.EAGER)
     private Set<Lecture> lectures;
 
