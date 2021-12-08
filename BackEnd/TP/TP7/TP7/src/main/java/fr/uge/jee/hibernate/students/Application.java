@@ -41,5 +41,8 @@ public class Application {
 
         System.out.println(sr.getStudentsOfLecture(lr.get(6L).get()));
         System.out.println(sr.getLecturesOfAStudent(8L));
+
+        sr.delete(8L);
+        sr.delete(14L);
     }
 }

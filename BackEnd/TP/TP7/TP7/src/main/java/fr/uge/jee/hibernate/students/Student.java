@@ -16,11 +16,11 @@ public class Student {
     private String firstName;
     @Column(name = "lastname")
     private String lastName;
-    @OneToOne(targetEntity = Address.class)
+    @OneToOne(cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REMOVE}, targetEntity = Address.class, fetch = FetchType.EAGER, orphanRemoval=true)
     private Address address;
-    @OneToOne(targetEntity = University.class)
+    @ManyToOne(targetEntity = University.class, fetch = FetchType.EAGER)
     private University university;
-    @OneToMany(targetEntity = Comment.class, fetch = FetchType.EAGER)
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, targetEntity = Comment.class, fetch = FetchType.EAGER, orphanRemoval=true)
     private List<Comment> comments;
     @ManyToMany(targetEntity = Lecture.class, fetch = FetchType.EAGER)
     private Set<Lecture> lectures;
