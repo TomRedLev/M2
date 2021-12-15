@@ -1,0 +1,23 @@
+/* TP5 - Big Data - Tom REDON - Groupe Initiaux */
+
+/* Partie 2 : */
+/* Question 1 : */
+On a 13674 records dans le RDD.
+
+/* Question 2 : */
+Réponses dans le notebook.
+
+/* Question 3 : */
+On a 25484 records dans le RDD.
+
+/* Question 4 : */
+Réponses dans le notebook.
+
+/* Question 5 : */
+On a 25484 records dans ce RDD.
+On a 687 paires qui ont plus d'une occurrence dans la base.
+
+/* Question 6 : */
+On a 18290 records dans ce RDD.
+
+
