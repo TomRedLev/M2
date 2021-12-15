@@ -1,0 +1,28 @@
+/* Examen 2018 - Big Data - Tom REDON - Groupe Initiaux */
+
+/* Question 16 : */
+B - val stationsId = stations.map(x => ((x._2), (x._1, x._3, x._4)))
+C - val stationsId = stations.map(case((a,b),c,d,e) => ((c), ((a,b), d, e)))
+
+/* Question 17 : */
+val trajets = sc.textFile("File.txt").map(x => x.split(" ").map(x => (x(4), x(0), x(1), x(7))
+
+/* Question 18 : */
+val trajets1200 = trajets.filter(x => x._3 > 1200)
+
+/* Question 19 : */
+A - B - C
+
+/* Question 20 : */
+org.apache.spark.rdd.RDD[(Int, Int)]
+
+/* Question 21 : */
+
+/* Question 22 : */
+
+/* Question 23 : */
+
+/* Question 24 : */
+
+/* Question 25 : */
+E

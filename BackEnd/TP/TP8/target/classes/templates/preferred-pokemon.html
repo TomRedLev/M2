@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Preferred Pokemon Chooser</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>
+        Preferred Pokemon Chooser
+    </h1>
+    <form th:action="@{/preferredpokemon}" method="post">
+            <div><label for="h">Name:</label>
+                <input id="h" type="text" name="name"></div>
+
+            <div><button type="submit">Compute</button></div>
+    </form>
+</body>
+</html>
