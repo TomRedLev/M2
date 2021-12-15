@@ -1,4 +1,4 @@
-package fr.uge.jee.hibernate.students;
+package fr.uge.jee.hibernate.studentsbi.students;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

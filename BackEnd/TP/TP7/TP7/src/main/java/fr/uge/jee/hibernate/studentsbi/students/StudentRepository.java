@@ -1,6 +1,4 @@
-package fr.uge.jee.hibernate.students;
-
-import fr.uge.jee.hibernate.employees.Employee;
+package fr.uge.jee.hibernate.studentsbi.students;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -44,7 +42,7 @@ public class StudentRepository {
 
     public Optional<Student> get(long id) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        Query query = em.createQuery("SELECT s FROM Student s WHERE s.id= :id");
+        Query query = em.createQuery("SELECT s FROM StudentBi s WHERE s.id= :id");
         query.setParameter("id", id);
         Student res = (Student) query.getSingleResult();
         em.close();
@@ -53,7 +51,7 @@ public class StudentRepository {
 
     public List<Student> getAll() {
         EntityManager em = entityManagerFactory.createEntityManager();
-        Query query = em.createQuery("SELECT s FROM Student s");
+        Query query = em.createQuery("SELECT s FROM StudentBi s");
         List<Student> res = query.getResultList();
         em.close();
         return res;
@@ -142,14 +140,14 @@ public class StudentRepository {
     public List<Student> getStudentsOfLecture(Lecture lecture) {
         EntityManager em = entityManagerFactory.createEntityManager();
         var lid = lecture.getId();
-        var query = em.createQuery( "SELECT s FROM Student AS s LEFT JOIN FETCH s.lectures AS l WHERE l.id = :lid ", Student.class).setParameter("lid", lid).getResultList();
+        var query = em.createQuery( "SELECT s FROM StudentBi AS s LEFT JOIN FETCH s.lectures AS l WHERE l.id = :lid ", Student.class).setParameter("lid", lid).getResultList();
         em.close();
         return query;
     }
 
     public List<Lecture> getLecturesOfAStudent(long id) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        Query query = em.createQuery("SELECT s.lectures FROM Student s WHERE s.id= :id");
+        Query query = em.createQuery("SELECT s.lectures FROM StudentBi s WHERE s.id= :id");
         query.setParameter("id", id);
         var res = query.getResultList();
         em.close();

@@ -1,4 +1,4 @@
-package fr.uge.jee.hibernate.students;
+package fr.uge.jee.hibernate.studentsbi.students;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -8,8 +8,8 @@ import java.util.Set;
 
 // Réponses à l'exercice 3 et 4 dans ce fichier.
 
-@Entity
-@Table(name = "Students")
+@Entity(name = "StudentBi")
+@Table(name = "StudentsBi")
 public class Student {
     @Id
     @GeneratedValue
