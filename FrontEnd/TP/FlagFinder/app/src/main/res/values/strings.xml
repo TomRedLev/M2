@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FlagFinder</string>
+    <string name="flag">Flag</string>
+    <string name="questionmark">?</string>
+</resources>
