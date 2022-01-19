@@ -1,0 +1,491 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#"
+     xml:base="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#hasTopping -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#hasTopping"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#American -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#American">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#hasTopping"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Mozarella"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pepperoni_sausage"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Tomato"/>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#American_hot -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#American_hot">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#hasTopping"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Mozarella"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pepperoni_sausage"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Tomato"/>
+                                    <owl:Class>
+                                        <owl:unionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Hot_green_pepper"/>
+                                            <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Jalapeno_pepper"/>
+                                        </owl:unionOf>
+                                    </owl:Class>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Anchovies -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Anchovies">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Fish"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Asparagus -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Asparagus">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Caper -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Caper">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Cheese -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Cheese">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Toppings"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Chicken -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Chicken">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Meat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Fish -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Fish">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Toppings"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Four_cheese -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Four_cheese">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Cheese"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Four_seasons -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Four_seasons">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#hasTopping"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Anchovies"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Caper"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Mozarella"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Mushroom"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Olive"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pepperoni_sausage"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Tomato"/>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Frutti_di_mare -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Frutti_di_mare">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#hasTopping"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Garlic"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Mixed_seafood"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Tomato"/>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Garlic -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Garlic">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Goats_cheese -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Goats_cheese">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Cheese"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Ham -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Ham">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Meat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Hot_green_pepper -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Hot_green_pepper">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Hot_spiced_beef -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Hot_spiced_beef">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Meat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Jalapeno_pepper -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Jalapeno_pepper">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Margherita -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Margherita">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#hasTopping"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Mozarella"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Tomato"/>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Meat -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Meat">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Toppings"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Mixed_seafood -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Mixed_seafood">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Fish"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Mozarella -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Mozarella">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Cheese"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Mushroom -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Mushroom">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Olive -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Olive">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Onion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Onion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Parma_ham -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Parma_ham">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Meat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Parmesan -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Parmesan">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Cheese"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pepperoni_sausage -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pepperoni_sausage">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Meat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas">
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Toppings"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Prawns -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Prawns">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Fish"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Quattro_formaggi -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Quattro_formaggi">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#hasTopping"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Four_cheese"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Tomato"/>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Pizzas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Red_onion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Red_onion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Rocket -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Rocket">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Sliced_tomato -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Sliced_tomato">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Spinach -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Spinach">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Sundried_tomato -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Sundried_tomato">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Tomato -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Tomato">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Toppings -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Toppings"/>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Toppings"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#egg -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#egg">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Meat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#green_pepper -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#green_pepper">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#peas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#peas">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tom/ontologies/2022/0/untitled-ontology-2#Vegetable"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
